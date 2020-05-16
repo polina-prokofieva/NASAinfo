@@ -10,6 +10,11 @@ body {
     color: antiquewhite;
 }
 
+div {
+    margin: 0;
+    padding: 0;
+}
+
 div, p, li, ul {
     box-sizing: border-box;
 }

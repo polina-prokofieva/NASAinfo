@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Preview from './Preview/Preview';
+import SelectMonth from './SelectMonth/SelectMonth';
+import SelectYear from "./SelectYear/SelectYear";
 import './GalleryPage.css';
 
-export default class GalleryPage extends Component {
-  startDate = new Date(2020, 1, 1);
+
+class GalleryPage extends Component {
+  startDate = new Date(this.props.year, this.props.month, 1);
   endDate = new Date();
 
   state = {
@@ -12,7 +17,7 @@ export default class GalleryPage extends Component {
 
   twoDigits = (n) => `${n < 10 ? '0' : ''}${n}`;
 
-  fromatDate(date) {
+  formatDate(date) {
     const year = date.getFullYear();
     const month = this.twoDigits(date.getMonth() + 1);
     const day = this.twoDigits(date.getDate());
@@ -20,29 +25,52 @@ export default class GalleryPage extends Component {
     return `${year}-${month}-${day}`;
   }
 
+  updateDates () {
+    this.startDate = new Date(this.props.year, this.props.month, 1);
+    this.endDate = new Date(this.props.year, this.props.month + 1, 1);
+  }
+
   componentDidMount() {
     this.generateGalleryPreviews();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.year !== this.props.year || prevProps.month !== this.props.month) {
+      this.updateDates();
+      this.generateGalleryPreviews();
+    }
+  }
+
   generateGalleryPreviews = (start = this.startDate, end = this.endDate) => {
-    const dates = this.state.dates;
+    const dates = [];
 
     for(let i = start; i < end; i.setDate(i.getDate() + 1)) {
-      dates.unshift(this.fromatDate(i));
+      dates.unshift(this.formatDate(i));
     }
 
     this.setState({ dates: dates });
   };
 
   render() {
+    const { dates } = this.state;
+
     return (
       <div className="Gallery">
         <h2> Gallery </h2>
-        <h3> February 2020 </h3>
+        <div className="galleryFilter">
+          <SelectYear />
+          <SelectMonth />
+        </div>
         <ul className="GalleryContent">
-          {this.state.dates.map((date) => <Preview date={date} key={date} />)}
+          {dates.map((date) => <Preview date={date} key={date} />)}
         </ul>
       </div>
     );
   }
 };
+
+const mapStateToProps = ({ year, month }) => {
+  return { year, month }
+}
+
+export default connect(mapStateToProps)(GalleryPage);

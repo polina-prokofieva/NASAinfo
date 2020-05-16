@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import MarsWeatherPage from "../Pages/MarsWeatherPage/MarsWeatherPage";
 import TopMenu from "../TopMenu/TopMenu";
-import GalleryPage from "../GalleryPage/GalleryPage";
+import GalleryPage from "../Pages/GalleryPage/GalleryPage";
 import HomePage from "../Pages/HomePage/HomePage";
 import './App.css';
 

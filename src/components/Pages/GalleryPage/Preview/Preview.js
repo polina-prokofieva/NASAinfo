@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Spinner from '../../Spinner/Spinner';
-import Error from '../../Error/Error';
-import NASAAPIService from '../../../services/NASAAPIService';
+import Spinner from '../../../Spinner/Spinner';
+import Error from '../../../Error/Error';
+import NASAAPIService from '../../../../services/NASAAPIService';
 import "./Preview.css";
 
 export default class Preview extends Component {
