@@ -6,10 +6,6 @@ import { monthChosen } from "../../../../actions";
 import { months, currentMonth } from '../../../../constants';
 import './SelectMonth.css';
 
-const options = months.map((a, i) => {
-  return { value: i + 1, label: a };
-});
-
 const defaultValue = { value: currentMonth + 1, label: months[currentMonth] };
 
 class SelectMonth extends Component {
@@ -18,19 +14,21 @@ class SelectMonth extends Component {
   };
 
   render() {
+    const { monthsOptions } = this.props;
+
     return (
       <Select
         className="galleryFilterSelect selectMonth"
         defaultValue = {defaultValue}
-        options={options}
+        options={monthsOptions}
         onChange={this.handleChange}
       />
     );
   }
 }
 
-const mapStateToProps = ({ month }) => {
-  return { month };
+const mapStateToProps = ({ month, monthsOptions }) => {
+  return { month, monthsOptions };
 };
 
 const mapDispatchToProps = { monthChosen };
