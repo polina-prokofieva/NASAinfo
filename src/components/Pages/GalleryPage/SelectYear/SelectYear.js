@@ -3,12 +3,8 @@ import Select from 'react-select';
 import { connect } from 'react-redux';
 import { yearChosen } from "../../../../actions";
 
-import { APODallYears } from '../../../../constants';
+import { YearsOptions, defaultYearOption } from '../../../../constants';
 import './SelectYear.css';
-
-const options = APODallYears.map((a, i) => {
-  return { value: a, label: a };
-});
 
 class SelectYear extends Component {
   handleChange = (year) => {
@@ -19,9 +15,9 @@ class SelectYear extends Component {
     return (
       <Select
         className="galleryFilterSelect selectYear"
-        defaultValue={options[options.length - 1]}
+        defaultValue={defaultYearOption}
         onChange={this.handleChange}
-        options={options}
+        options={YearsOptions}
       />
     );
   }

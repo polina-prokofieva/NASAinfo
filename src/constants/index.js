@@ -26,3 +26,11 @@ export const APODallYears = (new Array(currentYear - APODfirstyear + 1)).fill(AP
 export const getMonthsOptions = (year) => months.map((a, i) => {
   return { value: i + 1, label: a, isDisabled: year === currentYear && i > currentMonth};
 })
+
+export const defaultMonthOption = { value: currentMonth + 1, label: months[currentMonth] };
+
+export const YearsOptions = APODallYears.map((a, i) => {
+  return { value: a, label: a };
+});
+
+export const defaultYearOption = YearsOptions[YearsOptions.length - 1];

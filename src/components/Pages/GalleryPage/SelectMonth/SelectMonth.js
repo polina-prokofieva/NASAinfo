@@ -3,10 +3,8 @@ import Select from 'react-select';
 import { connect } from 'react-redux';
 import { monthChosen } from "../../../../actions";
 
-import { months, currentMonth } from '../../../../constants';
+import { defaultMonthOption } from '../../../../constants';
 import './SelectMonth.css';
-
-const defaultValue = { value: currentMonth + 1, label: months[currentMonth] };
 
 class SelectMonth extends Component {
   handleChange = (month) => {
@@ -19,7 +17,7 @@ class SelectMonth extends Component {
     return (
       <Select
         className="galleryFilterSelect selectMonth"
-        defaultValue = {defaultValue}
+        defaultValue = {defaultMonthOption}
         options={monthsOptions}
         onChange={this.handleChange}
       />
