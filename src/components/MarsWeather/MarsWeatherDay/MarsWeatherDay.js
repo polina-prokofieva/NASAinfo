@@ -15,11 +15,32 @@ const MarsWeatherDay = ({ sol, day: { AT, HWS, PRE, First_UTC }, onDayClick }) =
           onClick={onDayClick}>
       <p className="solDate">Sol {sol}</p>
       <p className="date">{altDay}</p>
-      <p className="airT"><span className="label">Air temp.:&nbsp;</span><span className="value">{at}</span><span className="unit">°C</span></p>
-      <p className="wind"><span className="label">Wind:&nbsp;</span><span className="value">{hws}</span><span className="unit">m/s</span></p>
-      <p className="pressure"><span className="label">Press.:&nbsp;</span><span className="value">{pre}</span><span className="unit">Pa</span></p>
+      <MarsWeatherDetail
+        classN="airT"
+        label="Air temp."
+        value={at}
+        unit="°C"
+      />
+      <MarsWeatherDetail
+        classN="wind"
+        label="Wind"
+        value={hws}
+        unit="m/s"
+      />
+      <MarsWeatherDetail
+        classN="pressure"
+        label="Press."
+        value={pre}
+        unit="Pa"
+      />
     </div>
   )
+}
+
+const MarsWeatherDetail = ({ classN, label, value, unit }) => {
+  return (
+    <p className={classN}><span className="label">{label}:&nbsp;</span><span className="value">{value}</span><span className="unit">{unit}</span></p>
+  );
 }
 
 export default MarsWeatherDay;

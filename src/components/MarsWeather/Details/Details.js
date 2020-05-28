@@ -43,7 +43,7 @@ const InfoBlock = ({ title, measurement, data }) => {
     <div className="InfoBlock">
       <h5>{title} ({measurement}):</h5>
       {Object.keys(transormedData).map(a => (
-        <p>
+        <p key={a}>
           <span>{a}:</span>&nbsp;
           <span>{transormedData[a]}</span>
         </p>
