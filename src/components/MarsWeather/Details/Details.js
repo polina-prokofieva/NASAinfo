@@ -1,31 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Details.css';
 
-const Details = ({ data, solKey }) => {
-  const date = new Date(data.First_UTC);
+const Details = ({ data, sol }) => {
+  const sol_data = data[sol];
+  const date = new Date(sol_data.First_UTC);
   const earthDay = date.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
 
   return (
     <div className="details">
-      <h3>Sol {solKey}</h3>
+      <h3>Sol {sol}</h3>
       <h4>{earthDay}</h4>
-      <p>Season: {data.Season} </p>
+      <p>Season: {sol_data.Season} </p>
 
       <div className="mainData">
         <InfoBlock
           title="Air temperature"
           measurement="°C"
-          data={data.AT}
+          data={sol_data.AT}
         />
         <InfoBlock
           title="Wind Speed"
           measurement="m/s"
-          data={data.HWS}
+          data={sol_data.HWS}
         />
         <InfoBlock
           title="Pressure"
           measurement="Pa"
-          data={data.PRE}
+          data={sol_data.PRE}
         />
       </div>
     </div>
@@ -50,6 +52,10 @@ const InfoBlock = ({ title, measurement, data }) => {
       ))}
     </div>
   );
-}
+};
 
-export default Details;
+const mapStateToProps = ({ sol }) => {
+  return { sol }
+};
+
+export default connect(mapStateToProps)(Details);

@@ -71,6 +71,6 @@ class GalleryPage extends Component {
 
 const mapStateToProps = ({ year, month }) => {
   return { year, month }
-}
+};
 
 export default connect(mapStateToProps)(GalleryPage);

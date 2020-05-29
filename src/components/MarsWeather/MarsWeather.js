@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { weatherLoaded } from "../../actions";
+
 import MarsWeatherDay from './MarsWeatherDay/MarsWeatherDay';
 import Details from "./Details/Details";
 import Spinner from '../Spinner/Spinner';
@@ -6,13 +9,13 @@ import Error from '../Error/Error';
 import NASAAPIService from '../../services/NASAAPIService';
 import './MarsWeather.css';
 
-export default class MarsWeather extends Component {
+
+class MarsWeather extends Component {
   nasaService = new NASAAPIService();
 
   state = {
     data: {},
     sol_keys: [],
-    choosenSol: null,
     loading: true,
     error: false
   }
@@ -25,10 +28,10 @@ export default class MarsWeather extends Component {
   }
 
   onWeatherLoaded = (data) => {
+    this.props.weatherLoaded(data);
     this.setState({
       data: data,
       sol_keys: data.sol_keys,
-      choosenSol: data.sol_keys[0],
       loading: false,
       error: false
     });
@@ -41,15 +44,9 @@ export default class MarsWeather extends Component {
     })
   }
 
-  onDayClick = (sol) => {
-    this.setState({
-      choosenSol: sol
-    })
-  }
-
   render (){
-    const { data, sol_keys, choosenSol, loading, error } = this.state;
-    const { viewDetails } = this.props;
+    const { data, sol_keys, loading, error } = this.state;
+    const { isDetailsVisible } = this.props;
 
     const hasDate = !(loading || error);
 
@@ -58,9 +55,7 @@ export default class MarsWeather extends Component {
     const content = hasDate ? <MarsWeatherView
                                 data={data}
                                 sol_keys={sol_keys}
-                                choosenSol={choosenSol}
-                                viewDetails={viewDetails}
-                                onDayClick={this.onDayClick}
+                                isDetailsVisible={isDetailsVisible && hasDate}
                               /> : null;
 
     return (
@@ -74,9 +69,7 @@ export default class MarsWeather extends Component {
   };
 }
 
-const MarsWeatherView = ({ data, sol_keys, viewDetails, choosenSol, onDayClick }) => {
-  console.log(`choosenSol = ${choosenSol}`);
-  console.log(sol_keys[choosenSol]);
+const MarsWeatherView = ({ data, sol_keys, isDetailsVisible }) => {
   return (
     <React.Fragment>
       <ul className="latestWeather">
@@ -85,12 +78,20 @@ const MarsWeatherView = ({ data, sol_keys, viewDetails, choosenSol, onDayClick }
             <MarsWeatherDay
               sol={key}
               day={data[key]}
-              onDayClick={() => onDayClick(key)}
             />
           </li>
         ))}
       </ul>
-      {viewDetails && choosenSol && <Details data={data[choosenSol]} solKey={choosenSol} />}
+      {isDetailsVisible && <Details data={data} />}
     </React.Fragment>
   );
-}
+};
+
+
+const mapStateToProps = ({ }) => {
+  return { }
+};
+
+const mapDispatchToProps = { weatherLoaded };
+
+export default connect(mapStateToProps, mapDispatchToProps)(MarsWeather);

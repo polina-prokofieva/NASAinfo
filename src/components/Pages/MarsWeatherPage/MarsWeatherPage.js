@@ -6,7 +6,7 @@ export default class MarsWeatherPage extends Component {
   render () {
     return (
       <div id="marsWeatherPage">
-        <MarsWeather viewDetails={true} />
+        <MarsWeather isDetailsVisible={true} />
       </div>
     );
   }

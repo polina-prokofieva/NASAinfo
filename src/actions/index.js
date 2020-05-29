@@ -12,7 +12,23 @@ const monthChosen = (month) => {
   };
 };
 
+const weatherLoaded = (data) => {
+  return {
+    type: 'WEATHER_LOADED',
+    payload: data
+  };
+}
+
+const solChosen = (sol) => {
+  return {
+    type: 'SOL_CHOSEN',
+    payload: sol
+  }
+}
+
 export {
   yearChosen,
-  monthChosen
+  monthChosen,
+  weatherLoaded,
+  solChosen
 };
