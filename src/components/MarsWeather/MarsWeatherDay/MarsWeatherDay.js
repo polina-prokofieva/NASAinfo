@@ -23,19 +23,19 @@ const MarsWeatherDay = ({ sol, day: { AT, HWS, PRE, First_UTC }, solChosen }) =>
       <p className="solDate">Sol {sol}</p>
       <p className="date">{altDay}</p>
       <MarsWeatherDetail
-        classN="airT"
+        type="airT"
         label="Air temp."
         value={at}
         unit="°C"
       />
       <MarsWeatherDetail
-        classN="wind"
+        type="wind"
         label="Wind"
         value={hws}
         unit="m/s"
       />
       <MarsWeatherDetail
-        classN="pressure"
+        type="pressure"
         label="Press."
         value={pre}
         unit="Pa"
@@ -44,9 +44,9 @@ const MarsWeatherDay = ({ sol, day: { AT, HWS, PRE, First_UTC }, solChosen }) =>
   )
 }
 
-const MarsWeatherDetail = ({ classN, label, value, unit }) => {
+const MarsWeatherDetail = ({ type, label, value, unit }) => {
   return (
-    <p className={classN}>
+    <p className={type}>
       <span className="label">{label}:&nbsp;</span><span className="value">{value}</span><span className="unit">{unit}</span>
     </p>
   );

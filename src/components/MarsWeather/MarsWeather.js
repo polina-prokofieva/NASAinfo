@@ -15,7 +15,7 @@ class MarsWeather extends Component {
 
   state = {
     data: {},
-    sol_keys: [],
+    solKeys: [],
     loading: true,
     error: false
   }
@@ -31,7 +31,7 @@ class MarsWeather extends Component {
     this.props.weatherLoaded(data);
     this.setState({
       data: data,
-      sol_keys: data.sol_keys,
+      solKeys: data.sol_keys,
       loading: false,
       error: false
     });
@@ -45,7 +45,7 @@ class MarsWeather extends Component {
   }
 
   render (){
-    const { data, sol_keys, loading, error } = this.state;
+    const { data, solKeys, loading, error } = this.state;
     const { isDetailsVisible } = this.props;
 
     const hasDate = !(loading || error);
@@ -54,7 +54,7 @@ class MarsWeather extends Component {
     const spinner = loading ? <Spinner/> : null;
     const content = hasDate ? <MarsWeatherView
                                 data={data}
-                                sol_keys={sol_keys}
+                                solKeys={solKeys}
                                 isDetailsVisible={isDetailsVisible && hasDate}
                               /> : null;
 
@@ -69,11 +69,11 @@ class MarsWeather extends Component {
   };
 }
 
-const MarsWeatherView = ({ data, sol_keys, isDetailsVisible }) => {
+const MarsWeatherView = ({ data, solKeys, isDetailsVisible }) => {
   return (
     <React.Fragment>
       <ul className="latestWeather">
-        {sol_keys.map(key => (
+        {solKeys.map(key => (
           <li key={key}>
             <MarsWeatherDay
               sol={key}
