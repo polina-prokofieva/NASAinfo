@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 import MarsWeatherPage from "../Pages/MarsWeatherPage/MarsWeatherPage";
 import TopMenu from "../TopMenu/TopMenu";
@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <TopMenu/>
+        <TopMenu />
 
         <Route path="/" component={HomePage} exact />
         <Route path="/gallery" component={GalleryPage} />
