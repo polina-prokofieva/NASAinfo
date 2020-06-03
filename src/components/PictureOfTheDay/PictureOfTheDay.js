@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
+import { youTubeReg } from '../../constants/index';
 import NASAAPIService from '../../services/NASAAPIService';
 import './PictureOfTheDay.css';
 
@@ -25,8 +26,6 @@ export default class PictureOfTheDay extends Component {
   }
 
   onPictureLoaded = (picture) => {
-    console.log(picture);
-
     this.setState({
       url: picture.url,
       hdurl: picture.hdurl,
@@ -44,19 +43,29 @@ export default class PictureOfTheDay extends Component {
     });
   };
 
+  isVideoContent(url) {
+    return youTubeReg.test(url);
+  }
+
   render() {
     const { url, hdurl, title, explanation, loading, error } = this.state;
+
+    const contentView = this.isVideoContent(url) ? <VideoView
+      url={url}
+      title={title}
+      explanation={explanation}
+    /> : <PictureView
+      url={url}
+      hdurl={hdurl}
+      title={title}
+      explanation={explanation}
+    />;
 
     const hasDate = !(loading || error);
 
     const errorMessage = error ? <Error /> : null;
     const spinner = loading ? <Spinner /> : null;
-    const content = hasDate ? (<PictureView
-      url={url}
-      hdurl={hdurl}
-      title={title}
-      explanation={explanation}
-    />) : null;
+    const content = hasDate ? contentView : null;
 
     return (
       <div className="pictureOfTheDay">
@@ -81,6 +90,27 @@ const PictureView = ({ url, hdurl, title, explanation }) => {
         <h2>{title}</h2>
         <p>{explanation}</p>
         <p className="download"><a href={hdurl} target="_blank" rel="noopener noreferrer">Download HD</a></p>
+      </div>
+    </React.Fragment>
+  );
+};
+
+const VideoView = ({ url, title, explanation }) => {
+  const modifiedUrl = `${url}&controls=0`;
+  return (
+    <React.Fragment>
+      <div className="image">
+        <iframe src={modifiedUrl}
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+        >
+        </iframe>
+
+      </div>
+      <div className="description">
+        <h2>{title}</h2>
+        <p>{explanation}</p>
       </div>
     </React.Fragment>
   );

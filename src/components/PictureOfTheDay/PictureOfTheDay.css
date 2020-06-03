@@ -15,7 +15,8 @@
     box-sizing: border-box;
 }
 
-.pictureOfTheDay img {
+.pictureOfTheDay img,
+.pictureOfTheDay iframe {
     width: 30vw;
     border: 5px solid #666d;
 }

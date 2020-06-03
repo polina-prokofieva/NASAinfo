@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from '../../../Spinner/Spinner';
 import Error from '../../../Error/Error';
+import { youTubeReg } from '../../../../constants/index';
 import NASAAPIService from '../../../../services/NASAAPIService';
 import "./Preview.css";
 
@@ -57,15 +58,27 @@ export default class Preview extends Component {
     });
   };
 
+  isVideoContent(url) {
+    return youTubeReg.test(url);
+  }
+
   render() {
     const { url, title, loading, error } = this.state;
     const { date } = this.props;
+
+    const contentView = this.isVideoContent(url) ? <VideoView
+      url={url}
+    /> : <PictureView
+      url={url}
+      title={title}
+      date={date}
+    />;
 
     const hasDate = !(loading || error);
 
     const errorMessage = error ? <Error /> : null;
     const spinner = loading ? <Spinner /> : null;
-    const content = hasDate ? (<PictureView url={url} title={title} date={date} />) : null;
+    const content = hasDate ? contentView : null;
 
     return (
       <li className="galleryPreview">
@@ -79,12 +92,22 @@ export default class Preview extends Component {
 
 const PictureView = ({ url, title, date }) => {
   return (
-    <React.Fragment>
-      <img
-        title={`${date} ${title}`}
-        alt={title}
-        src={url}
-      />
-    </React.Fragment>
+    <img
+      title={`${date} ${title}`}
+      alt={title}
+      src={url}
+    />
+  );
+};
+
+const VideoView = ({ url }) => {
+  const modifiedUrl = `${url}&controls=0`;
+  return (
+    <iframe src={modifiedUrl}
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+    >
+    </iframe>
   );
 };

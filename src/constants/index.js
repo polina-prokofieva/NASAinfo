@@ -34,3 +34,5 @@ export const YearsOptions = APODallYears.map((a, i) => {
 });
 
 export const defaultYearOption = YearsOptions[YearsOptions.length - 1];
+
+export const youTubeReg = /www\.youtube\.com/;

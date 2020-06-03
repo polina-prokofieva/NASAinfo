@@ -17,7 +17,8 @@ li.galleryPreview:hover {
     cursor: pointer;
 }
 
-li.galleryPreview img {
+li.galleryPreview img,
+li.galleryPreview iframe {
     height: 235px;
     min-width: 235px;
 }
