@@ -1,4 +1,4 @@
-Project deployed on [https://polina-prokofieva.github.io/NASAinfo].
+Project deployed on [https://polina-prokofieva.github.io/NASAinfo](https://polina-prokofieva.github.io/NASAinfo).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
