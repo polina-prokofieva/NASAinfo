@@ -68,11 +68,11 @@ export default class PictureOfTheDay extends Component {
     const content = hasDate ? contentView : null;
 
     return (
-      <div className="pictureOfTheDay">
+      <section className="pictureOfTheDay">
         {errorMessage}
         {spinner}
         {content}
-      </div>
+      </section>
     );
   }
 };

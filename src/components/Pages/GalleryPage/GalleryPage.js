@@ -55,7 +55,7 @@ class GalleryPage extends Component {
     const { dates } = this.state;
 
     return (
-      <div className="Gallery">
+      <main className="Gallery">
         <h2> Gallery </h2>
         <div className="galleryFilter">
           <SelectYear />
@@ -64,7 +64,7 @@ class GalleryPage extends Component {
         <ul className="GalleryContent">
           {dates.map((date) => <Preview date={date} key={date} />)}
         </ul>
-      </div>
+      </main>
     );
   }
 };

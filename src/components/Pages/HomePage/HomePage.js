@@ -5,10 +5,10 @@ import './HomePage.css';
 
 const Gallery = () => {
   return (
-    <div className="Home">
+    <main className="Home">
       <PictureOfTheDay />
       <MarsWeather viewDetails={false} />
-    </div>
+    </main>
   );
 };
 

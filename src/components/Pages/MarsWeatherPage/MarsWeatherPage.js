@@ -5,9 +5,9 @@ import './MarsWeatherPage.css';
 export default class MarsWeatherPage extends Component {
   render () {
     return (
-      <div id="marsWeatherPage">
+      <main id="marsWeatherPage">
         <MarsWeather isDetailsVisible={true} />
-      </div>
+      </main>
     );
   }
 };

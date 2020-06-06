@@ -59,12 +59,12 @@ class MarsWeather extends Component {
                               /> : null;
 
     return (
-      <div className="marsWeather">
+      <section className="marsWeather">
         <h2>Mars Weather</h2>
         {errorMessage}
         {spinner}
         {content}
-        </div>
+      </section>
     );
   };
 }

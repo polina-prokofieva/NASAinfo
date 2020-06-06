@@ -11,7 +11,9 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <TopMenu />
+        <header>
+          <TopMenu />
+        </header>
 
         <Route path="/" component={HomePage} exact />
         <Route path="/gallery" component={GalleryPage} />
