@@ -4,30 +4,30 @@
     padding: 0.5vw 2vw 0.5vw;
     margin: 8px 0.3vw;
     border-radius: 15px;
-}
 
-.marsWeather .details h3 {
-    font-size: 2rem;
-}
+    h3 {
+        font-size: 2rem;
+    }
 
-.marsWeather .details h4 {
-    font-size: 1.8rem;
-}
+    h4 {
+        font-size: 1.8rem;
+    }
 
-.marsWeather .details p {
-    font-size: 1.4rem;
-}
+    p {
+        font-size: 1.4rem;
+    }
 
-.marsWeather .details .mainData {
-    display: flex;
-    justify-content: space-between;
-}
+    .mainData {
+        display: flex;
+        justify-content: space-between;
+    }
 
-.marsWeather .details .InfoBlock {
-    margin: 10px;
-    padding: 10px;
-}
+    .InfoBlock {
+        margin: 10px;
+        padding: 10px;
 
-.marsWeather .details .InfoBlock h5 {
-    font-size: 1.6rem;
+        h5 {
+            font-size: 1.6rem;
+        }
+    }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './Details.css';
+
+import './Details.scss';
+
 
 const Details = ({ data, sol }) => {
   const sol_data = data[sol];
@@ -10,7 +12,9 @@ const Details = ({ data, sol }) => {
   return (
     <div className="details">
       <h3>Sol {sol}</h3>
-      <h4>{earthDay}</h4>
+      <h4>
+        <time dateTime={sol_data.First_UTC}>{earthDay}</time>
+      </h4>
       <p>Season: {sol_data.Season} </p>
 
       <div className="mainData">
@@ -46,7 +50,7 @@ const InfoBlock = ({ title, measurement, data }) => {
       <h5>{title} ({measurement}):</h5>
       {Object.keys(transormedData).map(a => (
         <p key={a}>
-          <span>{a}:</span>&nbsp;
+          {/*<span>{a}:</span>&nbsp;*/}
           <span>{transormedData[a]}</span>
         </p>
       ))}

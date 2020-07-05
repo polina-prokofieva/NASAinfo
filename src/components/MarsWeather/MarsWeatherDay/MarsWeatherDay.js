@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { solChosen } from "../../../actions";
 
-import './MarsWeatherDay.css';
+import './MarsWeatherDay.scss';
 
 
 const MarsWeatherDay = ({ sol, day: { AT, HWS, PRE, First_UTC }, solChosen }) => {
@@ -21,7 +21,9 @@ const MarsWeatherDay = ({ sol, day: { AT, HWS, PRE, First_UTC }, solChosen }) =>
     <div className="marsWeatherDay"
           onClick={onDayClick}>
       <p className="solDate">Sol {sol}</p>
-      <p className="date">{altDay}</p>
+      <p className="date">
+        <time dateTime={First_UTC}>{altDay}</time>
+      </p>
       <MarsWeatherDetail
         type="airT"
         label="Air temp."
@@ -52,10 +54,6 @@ const MarsWeatherDetail = ({ type, label, value, unit }) => {
   );
 }
 
-const mapStateToProps = () => {
-  return {}
-};
-
 const mapDispatchToProps = { solChosen };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MarsWeatherDay);
+export default connect(null, mapDispatchToProps)(MarsWeatherDay);

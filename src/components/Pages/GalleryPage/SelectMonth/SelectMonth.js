@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { monthChosen } from "../../../../actions";
 
 import { defaultMonthOption } from '../../../../constants';
-import './SelectMonth.css';
+import './SelectMonth.scss';
 
 class SelectMonth extends Component {
   handleChange = (month) => {

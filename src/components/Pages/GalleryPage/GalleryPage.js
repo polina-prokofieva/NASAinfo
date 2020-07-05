@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Preview from './Preview/Preview';
 import SelectMonth from './SelectMonth/SelectMonth';
 import SelectYear from "./SelectYear/SelectYear";
-import './GalleryPage.css';
+import './GalleryPage.scss';
 
 
 class GalleryPage extends Component {

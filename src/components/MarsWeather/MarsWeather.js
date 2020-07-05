@@ -7,7 +7,7 @@ import Details from "./Details/Details";
 import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
 import NASAAPIService from '../../services/NASAAPIService';
-import './MarsWeather.css';
+import './MarsWeather.scss';
 
 
 class MarsWeather extends Component {
@@ -88,10 +88,6 @@ const MarsWeatherView = ({ data, solKeys, isDetailsVisible }) => {
 };
 
 
-const mapStateToProps = ({ }) => {
-  return { }
-};
-
 const mapDispatchToProps = { weatherLoaded };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MarsWeather);
+export default connect(null, mapDispatchToProps)(MarsWeather);

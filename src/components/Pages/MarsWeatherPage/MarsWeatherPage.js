@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MarsWeather from "../../MarsWeather/MarsWeather";
-import './MarsWeatherPage.css';
+import './MarsWeatherPage.scss';
 
 export default class MarsWeatherPage extends Component {
   render () {

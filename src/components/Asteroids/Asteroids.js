@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NASAAPIService from '../../services/NASAAPIService';
-import './Asteroids.css';
+import './Asteroids.scss';
 
 
 export default class Asteroids extends Component {

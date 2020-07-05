@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { yearChosen } from "../../../../actions";
 
 import { YearsOptions, defaultYearOption } from '../../../../constants';
-import './SelectYear.css';
+import './SelectYear.scss';
 
 class SelectYear extends Component {
   handleChange = (year) => {

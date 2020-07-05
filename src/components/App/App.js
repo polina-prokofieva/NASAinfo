@@ -5,7 +5,7 @@ import MarsWeatherPage from "../Pages/MarsWeatherPage/MarsWeatherPage";
 import TopMenu from "../TopMenu/TopMenu";
 import GalleryPage from "../Pages/GalleryPage/GalleryPage";
 import HomePage from "../Pages/HomePage/HomePage";
-import './App.css';
+import './App.scss';
 
 const App = () => {
   return (

@@ -3,7 +3,7 @@ import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
 import { youTubeReg } from '../../constants/index';
 import NASAAPIService from '../../services/NASAAPIService';
-import './PictureOfTheDay.css';
+import './PictureOfTheDay.scss';
 
 
 export default class PictureOfTheDay extends Component {
