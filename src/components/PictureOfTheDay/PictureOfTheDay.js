@@ -101,6 +101,7 @@ const VideoView = ({ url, title, explanation }) => {
     <React.Fragment>
       <div className="image">
         <iframe src={modifiedUrl}
+                title="Picture Of The Day"
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen

@@ -104,6 +104,7 @@ const VideoView = ({ url }) => {
   const modifiedUrl = `${url}&controls=0`;
   return (
     <iframe src={modifiedUrl}
+            title="Picture Of The Day Preview"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
