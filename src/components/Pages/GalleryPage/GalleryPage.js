@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Preview from './Preview/Preview';
 import SelectMonth from './SelectMonth/SelectMonth';
 import SelectYear from "./SelectYear/SelectYear";
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
+
 import './GalleryPage.scss';
 
 
@@ -55,16 +57,18 @@ class GalleryPage extends Component {
     const { dates } = this.state;
 
     return (
-      <main id="galleryPage">
-        <h2> Gallery </h2>
-        <div className="galleryFilter">
-          <SelectYear />
-          <SelectMonth />
-        </div>
-        <ul className="GalleryContent">
-          {dates.map((date) => <Preview date={date} key={date} />)}
-        </ul>
-      </main>
+      <ErrorBoundry>
+        <main id="galleryPage">
+          <h2> Gallery </h2>
+          <div className="galleryFilter">
+            <SelectYear />
+            <SelectMonth />
+          </div>
+          <ul className="GalleryContent">
+            {dates.map((date) => <Preview date={date} key={date} />)}
+          </ul>
+        </main>
+      </ErrorBoundry>
     );
   }
 };

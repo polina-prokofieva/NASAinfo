@@ -8,7 +8,7 @@ import './SelectYear.scss';
 
 class SelectYear extends Component {
   handleChange = (year) => {
-      this.props.yearChosen(year.value);
+    this.props.yearChosen(year.value);
   };
 
   render() {

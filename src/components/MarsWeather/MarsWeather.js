@@ -6,6 +6,8 @@ import MarsWeatherDay from './MarsWeatherDay/MarsWeatherDay';
 import Details from "./Details/Details";
 import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
+
 import NASAAPIService from '../../services/NASAAPIService';
 import './MarsWeather.scss';
 
@@ -25,7 +27,7 @@ class MarsWeather extends Component {
       .getMarsWeather()
       .then(this.onWeatherLoaded)
       .catch(this.onError);
-  }
+  };
 
   onWeatherLoaded = (data) => {
     this.props.weatherLoaded(data);
@@ -35,14 +37,14 @@ class MarsWeather extends Component {
       loading: false,
       error: false
     });
-  }
+  };
 
   onError = () => {
     this.setState({
       loading: false,
       error: true
     })
-  }
+  };
 
   render (){
     const { data, solKeys, loading, error } = this.state;
@@ -59,12 +61,14 @@ class MarsWeather extends Component {
                               /> : null;
 
     return (
-      <section className="marsWeather">
-        <h2>Mars Weather</h2>
-        {errorMessage}
-        {spinner}
-        {content}
-      </section>
+      <ErrorBoundry>
+        <section className="marsWeather">
+          <h2>Mars Weather</h2>
+          {errorMessage}
+          {spinner}
+          {content}
+        </section>
+      </ErrorBoundry>
     );
   };
 }
