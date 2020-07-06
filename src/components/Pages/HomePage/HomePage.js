@@ -3,13 +3,13 @@ import PictureOfTheDay from '../../PictureOfTheDay/PictureOfTheDay';
 import MarsWeather from "../../MarsWeather/MarsWeather";
 import './HomePage.scss';
 
-const Gallery = () => {
+const HomePage = () => {
   return (
-    <main className="Home">
+    <main id="homePage">
       <PictureOfTheDay />
       <MarsWeather viewDetails={false} />
     </main>
   );
 };
 
-export default Gallery;
+export default HomePage;

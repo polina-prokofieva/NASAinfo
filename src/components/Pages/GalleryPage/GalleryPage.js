@@ -55,7 +55,7 @@ class GalleryPage extends Component {
     const { dates } = this.state;
 
     return (
-      <main className="Gallery">
+      <main id="galleryPage">
         <h2> Gallery </h2>
         <div className="galleryFilter">
           <SelectYear />
