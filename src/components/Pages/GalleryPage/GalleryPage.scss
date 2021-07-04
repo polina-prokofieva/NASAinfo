@@ -1,30 +1,31 @@
 #galleryPage {
-    h2, h3 {
-        text-align: center;
-    }
+  h2,
+  h3 {
+    text-align: center;
+  }
 
-    h3 {
-        font-size: 2rem;
-    }
+  h3 {
+    font-size: 2rem;
+  }
 
-    .GalleryContent {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
+  .GalleryContent {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
 
 .galleryFilter {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    .galleryFilterSelect {
-        margin: 0 10px;
-        font-size: medium;
-        color: #4682b4;
+  .galleryFilterSelect {
+    margin: 0 10px;
+    font-size: medium;
+    color: #4682b4;
 
-        div {
-            margin: 0;
-        }
+    div {
+      margin: 0;
     }
+  }
 }

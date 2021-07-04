@@ -1,45 +1,45 @@
 .marsWeatherDay {
-    p {
-        margin: 0.8vw 0;
-        font-size: 1.4rem;
+  p {
+    margin: 0.8vw 0;
+    font-size: 1.4rem;
 
-        .label {
-            flex-grow: 3;
-            text-align: right;
-        }
-
-        .value {
-            flex-grow: 2;
-            text-align: right;
-        }
-
-        .unit {
-            font-weight: bold;
-            flex-grow: 1;
-            text-align: left;
-        }
+    .label {
+      flex-grow: 3;
+      text-align: right;
     }
 
-    .solDate {
-        font-weight: bold;
-        font-size: 1.8rem;
-        margin: 1vw 0;
-        text-align: center;
+    .value {
+      flex-grow: 2;
+      text-align: right;
     }
 
-    .date {
-        font-weight: bold;
-        font-size: 1.3rem;
-        padding: 0 0 1vw 0;
-        margin-bottom: 1.1vw;
-        border-bottom: 1px solid peru;
-        text-align: center;
+    .unit {
+      font-weight: bold;
+      flex-grow: 1;
+      text-align: left;
     }
+  }
 
-    .airT,
-    .wind,
-    .pressure {
-        display: flex;
-        justify-content: space-between;
-    }
+  .solDate {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin: 1vw 0;
+    text-align: center;
+  }
+
+  .date {
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 0 0 1vw 0;
+    margin-bottom: 1.1vw;
+    border-bottom: 1px solid peru;
+    text-align: center;
+  }
+
+  .airT,
+  .wind,
+  .pressure {
+    display: flex;
+    justify-content: space-between;
+  }
 }
