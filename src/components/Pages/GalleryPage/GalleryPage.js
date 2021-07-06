@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import Preview from './Preview/Preview';
 import SelectMonth from './SelectMonth/SelectMonth';
 import SelectYear from "./SelectYear/SelectYear";
-import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
+import ErrorBoundry from '../../ErrorBoundry/ErrorBoundry';
 
 import './GalleryPage.scss';
-
 
 class GalleryPage extends Component {
   startDate = new Date(this.props.year, this.props.month, 1);

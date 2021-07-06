@@ -16,14 +16,9 @@ const TopMenu = () => {
             <span>Gallery</span>
           </Link>
         </li>
-        <li>
-          <Link to="/marsweather">
-            <span>Mars Weather</span>
-          </Link>
-        </li>
       </ul>
     </nav>
-  )
+  );
 };
 
 export default TopMenu;
