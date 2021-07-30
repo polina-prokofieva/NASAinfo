@@ -1,3 +1,11 @@
 .App {
   max-width: 1330px;
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 1vw;
+    background-color: #000;
+  }
 }

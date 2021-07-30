@@ -1,20 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './TopMenu.module.scss';
 
 const TopMenu = () => {
   return (
-    <nav>
-      <ul className={styles.TopMenu}>
+    <nav className={styles.TopMenu}>
+      <ul>
         <li>
-          <Link to="/">
+          <NavLink to="/home" activeClassName={styles.selected}>
             <span>Home</span>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/gallery">
+          <NavLink to="/gallery" activeClassName={styles.selected}>
             <span>Gallery</span>
-          </Link>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/transfer" activeClassName={styles.selected}>
+            <span>Transfer</span>
+          </NavLink>
         </li>
       </ul>
     </nav>
