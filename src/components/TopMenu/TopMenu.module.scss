@@ -1,36 +1,35 @@
-ul.menu {
+ul.TopMenu {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-wrap: wrap;
-  margin: 0.5vw 0 0 0;
+  margin: 2vw 0;
   padding: 0;
 
   li {
     list-style: none;
-    margin: 0.5vw;
-
+    
     a {
+      margin: 0.5vw;
       padding: 1vw;
       text-decoration: none;
       color: #6893b7;
       font-size: 1.8rem;
       border: none;
+      border-radius: 10px;
+      background-color: #33333388;
+      transition: all 0.5s ease-in;
 
       &:hover {
+        padding: 1.3vw;
         color: #6893b7;
         background-color: #333333dd;
-        background: linear-gradient(
-          0,
-          rgba(51, 51, 51, 0.5) 0%,
-          rgba(51, 51, 51, 0) 100%
-        );
+        transition: all 0.1s ease-in;
       }
 
       span {
         text-decoration: none;
         color: #6893b7;
         font-size: 2.2rem;
-        border-bottom: 1px solid peru;
       }
     }
   }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './TopMenu.scss';
+import styles from './TopMenu.module.scss';
 
 const TopMenu = () => {
   return (
     <nav>
-      <ul className="menu">
+      <ul className={styles.TopMenu}>
         <li>
           <Link to="/">
             <span>Home</span>
