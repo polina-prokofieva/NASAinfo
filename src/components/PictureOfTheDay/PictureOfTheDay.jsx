@@ -3,7 +3,7 @@ import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
 import { youTubeReg } from '../../constants/index';
 import NASAAPIService from '../../services/NASAAPIService';
-import './PictureOfTheDay.scss';
+import styles from './PictureOfTheDay.module.scss';
 
 
 export default class PictureOfTheDay extends Component {
@@ -68,7 +68,7 @@ export default class PictureOfTheDay extends Component {
     const content = hasDate ? contentView : null;
 
     return (
-      <section className="pictureOfTheDay">
+      <section className={styles.PictureOfTheDay}>
         {errorMessage}
         {spinner}
         {content}
@@ -80,13 +80,13 @@ export default class PictureOfTheDay extends Component {
 const PictureView = ({ url, hdurl, title, explanation }) => {
   return (
     <React.Fragment>
-      <div className="image">
+      <div className={styles.image}>
         <img
           alt={title}
           src={url}
         />
       </div>
-      <div className="description">
+      <div className={styles.description}>
         <h2>{title}</h2>
         <p>{explanation}</p>
         <p className="download"><a href={hdurl} target="_blank" rel="noopener noreferrer">Download HD</a></p>
@@ -99,7 +99,7 @@ const VideoView = ({ url, title, explanation }) => {
   const modifiedUrl = `${url}&controls=0`;
   return (
     <React.Fragment>
-      <div className="image">
+      <div className={styles.image}>
         <iframe src={modifiedUrl}
                 title="Picture Of The Day"
                 frameBorder="0"
@@ -109,7 +109,7 @@ const VideoView = ({ url, title, explanation }) => {
         </iframe>
 
       </div>
-      <div className="description">
+      <div className={styles.description}>
         <h2>{title}</h2>
         <p>{explanation}</p>
       </div>

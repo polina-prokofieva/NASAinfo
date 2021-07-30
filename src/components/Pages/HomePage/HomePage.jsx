@@ -1,10 +1,10 @@
 import React from 'react';
 import PictureOfTheDay from '../../PictureOfTheDay/PictureOfTheDay';
-import './HomePage.scss';
+import styles from './HomePage.module.scss';
 
 const HomePage = () => {
   return (
-    <main id="homePage">
+    <main className={styles.HomePage} id="homePage">
       <PictureOfTheDay />
     </main>
   );

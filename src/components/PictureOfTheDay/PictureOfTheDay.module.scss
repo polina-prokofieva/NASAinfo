@@ -1,11 +1,12 @@
-.pictureOfTheDay {
+.PictureOfTheDay {
   display: flex;
   box-sizing: border-box;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-  padding: 0.8vw;
+  align-items: center;
+  padding: 1.5vw;
+  background-color: #000000dd;
 
   .image {
     text-align: center;
@@ -15,7 +16,8 @@
 
   img {
     width: 30vw;
-    border: 5px solid #666d;
+    border: 5px solid peru;
+    border-radius: 35px;
   }
 
   .description {
@@ -29,8 +31,9 @@
     }
 
     p {
-      font-size: 1.6rem;
       margin-bottom: 0;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
 
       &.download {
         padding-top: 15px;
@@ -41,8 +44,8 @@
   }
 }
 
-@media screen and (min-width: 1330px) {
-  .pictureOfTheDay {
+@media (min-width: 1330px) {
+  .PictureOfTheDay {
     .image,
     img {
       width: 300px;
@@ -55,8 +58,8 @@
   }
 }
 
-@media screen and (max-width: 740px) {
-  .pictureOfTheDay {
+@media (max-width: 740px) {
+  .PictureOfTheDay {
     .image {
       padding-top: 3vw;
     }
@@ -79,8 +82,8 @@
   }
 }
 
-@media screen and (max-width: 350px) {
-  .pictureOfTheDay {
+@media (max-width: 350px) {
+  .PictureOfTheDay {
     .image,
     img {
       width: 90vw;
