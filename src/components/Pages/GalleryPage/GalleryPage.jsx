@@ -6,7 +6,7 @@ import SelectMonth from './SelectMonth/SelectMonth';
 import SelectYear from "./SelectYear/SelectYear";
 import ErrorBoundry from '../../ErrorBoundry/ErrorBoundry';
 
-import './GalleryPage.scss';
+import styles from './GalleryPage.module.scss';
 
 class GalleryPage extends Component {
   startDate = new Date(this.props.year, this.props.month, 1);
@@ -57,13 +57,13 @@ class GalleryPage extends Component {
 
     return (
       <ErrorBoundry>
-        <main id="galleryPage">
+        <main className={styles.GalleryPage}>
           <h2> Gallery </h2>
-          <div className="galleryFilter">
+          <div className={styles.filter}>
             <SelectYear />
             <SelectMonth />
           </div>
-          <ul className="GalleryContent">
+          <ul className={styles.content}>
             {dates.map((date) => <Preview date={date} key={date} />)}
           </ul>
         </main>

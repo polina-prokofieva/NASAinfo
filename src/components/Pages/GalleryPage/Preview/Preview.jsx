@@ -3,7 +3,7 @@ import Spinner from '../../../Spinner/Spinner';
 import Error from '../../../Error/Error';
 import { youTubeReg } from '../../../../constants/index';
 import NASAAPIService from '../../../../services/NASAAPIService';
-import "./Preview.scss";
+import styles from "./Preview.module.scss";
 
 export default class Preview extends Component {
   nasaService = new NASAAPIService();
@@ -81,7 +81,7 @@ export default class Preview extends Component {
     const content = hasDate ? contentView : null;
 
     return (
-      <li className="galleryPreview">
+      <li className={styles.GalleryPreview}>
         {errorMessage}
         {spinner}
         {content}

@@ -1,4 +1,5 @@
-#galleryPage {
+.GalleryPage {
+  margin: 0;
   h2,
   h3 {
     text-align: center;
@@ -8,14 +9,16 @@
     font-size: 2rem;
   }
 
-  .GalleryContent {
+  .content {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    padding: 15px;
+    background-color: #333333dd;
   }
 }
 
-.galleryFilter {
+.filter {
   display: flex;
   justify-content: center;
 
