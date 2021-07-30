@@ -13,14 +13,15 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 0;
     padding: 15px;
-    background-color: #333333dd;
   }
 }
 
 .filter {
   display: flex;
   justify-content: center;
+  padding: 2.5vw 0 1vw 0;
 
   .galleryFilterSelect {
     margin: 0 10px;

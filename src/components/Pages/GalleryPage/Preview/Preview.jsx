@@ -81,7 +81,7 @@ export default class Preview extends Component {
     const content = hasDate ? contentView : null;
 
     return (
-      <li className={styles.GalleryPreview}>
+      <li className={styles.Preview}>
         {errorMessage}
         {spinner}
         {content}

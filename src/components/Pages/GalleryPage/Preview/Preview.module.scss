@@ -1,22 +1,20 @@
-.GalleryPreview {
+.Preview {
   $size: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: $size;
   height: $size;
   text-align: center;
-  // margin: 8px;
   list-style: none;
   overflow: hidden;
   margin: 8px;
+  border-radius: 25px;
 
   &:hover {
     cursor: pointer;
 
     img {
-      height: $size + 100;
-      // min-width: 500px;
+      height: 105%;
       transition: width 1s, height 1s;
       transition-timing-function: linear;
     }
@@ -26,14 +24,7 @@
   iframe {
     flex: 1 0 auto;
     height: $size;
-    min-width: $size;
     transition: width 1s, height 1s;
     transition-timing-function: linear;
-  }
-}
-
-.PictureView {
-  img {
-    max-width: 100%;
   }
 }

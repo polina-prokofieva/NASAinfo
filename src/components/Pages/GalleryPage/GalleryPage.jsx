@@ -58,7 +58,6 @@ class GalleryPage extends Component {
     return (
       <ErrorBoundry>
         <main className={styles.GalleryPage}>
-          <h2> Gallery </h2>
           <div className={styles.filter}>
             <SelectYear />
             <SelectMonth />
