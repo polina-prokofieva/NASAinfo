@@ -6,6 +6,8 @@ import SelectMonth from './SelectMonth/SelectMonth';
 import SelectYear from "./SelectYear/SelectYear";
 import ErrorBoundry from '../../ErrorBoundry/ErrorBoundry';
 
+import { formatDate } from '../../../utils/dateUtils';
+
 import styles from './GalleryPage.module.scss';
 
 class GalleryPage extends Component {
@@ -16,16 +18,6 @@ class GalleryPage extends Component {
     dates: []
   };
 
-  twoDigits = (n) => `${n < 10 ? '0' : ''}${n}`;
-
-  formatDate(date) {
-    const year = date.getFullYear();
-    const month = this.twoDigits(date.getMonth() + 1);
-    const day = this.twoDigits(date.getDate());
-
-    return `${year}-${month}-${day}`;
-  }
-
   updateDates () {
     this.startDate = new Date(this.props.year, this.props.month, 1);
     this.endDate = new Date(this.props.year, this.props.month + 1, 1);
@@ -35,7 +27,7 @@ class GalleryPage extends Component {
     this.generateGalleryPreviews();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if(prevProps.year !== this.props.year || prevProps.month !== this.props.month) {
       this.updateDates();
       this.generateGalleryPreviews();
@@ -46,7 +38,7 @@ class GalleryPage extends Component {
     const dates = [];
 
     for(let i = start; i < end; i.setDate(i.getDate() + 1)) {
-      dates.unshift(this.formatDate(i));
+      dates.unshift(formatDate(i));
     }
 
     this.setState({ dates: dates });

@@ -1,83 +1,67 @@
-import React, { Component } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
-import { youTubeReg } from '../../constants/index';
+import { isVideoContent, today } from '../../utils/common';
 import NASAAPIService from '../../services/NASAAPIService';
 import styles from './PictureOfTheDay.module.scss';
 
 
-export default class PictureOfTheDay extends Component {
-  nasaService = new NASAAPIService();
-
-  state = {
+const PictureOfTheDay = () => {
+  const initialState = {
     url: null,
     title: '',
     explanation: '',
-    hdurl: '*',
-    loading: true,
-    error: false
+    hdurl: '*'
   };
 
-  componentDidMount() {
-    this.nasaService
-      .getPictureOfTheDay()
-      .then(this.onPictureLoaded)
-      .catch(this.onError);
-  }
+  const nasaService = useMemo(() => new NASAAPIService(), []);
 
-  onPictureLoaded = (picture) => {
-    this.setState({
-      url: picture.url,
-      hdurl: picture.hdurl,
-      title: picture.title,
-      explanation: picture.explanation,
-      loading: false,
-      error: false
-    });
+  const [state, setState] = useState(initialState);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const onPictureLoaded = (picture) => {
+    setLoading(false);
+    setError(false);
+    setState({ ...picture });
   };
 
-  onError = () => {
-    this.setState({
-      loading: false,
-      error: true
-    });
+  const onError = () => {
+    setLoading(false);
+    setError(true)
   };
 
-  isVideoContent(url) {
-    return youTubeReg.test(url);
-  }
+  useEffect(() => {
+    nasaService.getPictureOfTheDay()
+      .then(onPictureLoaded)
+      .catch(onError);
+  }, [nasaService]);
 
-  render() {
-    const { url, hdurl, title, explanation, loading, error } = this.state;
+  const { url, hdurl, title, explanation } = state;
 
-    const contentView = this.isVideoContent(url) ? <VideoView
-      url={url}
-      title={title}
-      explanation={explanation}
-    /> : <PictureView
-      url={url}
-      hdurl={hdurl}
-      title={title}
-      explanation={explanation}
-    />;
+  const viewProps = { url, title, explanation };
 
-    const hasDate = !(loading || error);
+  const contentView = isVideoContent(url) ?
+    <VideoView { ...viewProps } /> :
+    <PictureView { ...viewProps } hdurl={hdurl} />;
 
-    const errorMessage = error ? <Error /> : null;
-    const spinner = loading ? <Spinner /> : null;
-    const content = hasDate ? contentView : null;
+  const hasDate = !(loading || error);
 
-    return (
-      <section className={styles.PictureOfTheDay}>
-        {errorMessage}
-        {spinner}
-        {content}
-      </section>
-    );
-  }
+  const errorMessage = error ? <Error /> : null;
+  const spinner = loading ? <Spinner /> : null;
+  const content = hasDate ? contentView : null;
+
+  return (
+    <section className={styles.PictureOfTheDay}>
+      {errorMessage}
+      {spinner}
+      {content}
+    </section>
+  );
 };
 
-const PictureView = ({ url, hdurl, title, explanation }) => {
+const PictureView = ({ url, hdurl, title, explanation, date = today }) => {
+  console.log(date);
   return (
     <React.Fragment>
       <div className={styles.image}>
@@ -85,7 +69,7 @@ const PictureView = ({ url, hdurl, title, explanation }) => {
           alt={title}
           src={url}
         />
-      </div>
+      </div>      
       <div className={styles.description}>
         <h2>{title}</h2>
         <p>{explanation}</p>
@@ -116,3 +100,5 @@ const VideoView = ({ url, title, explanation }) => {
     </React.Fragment>
   );
 };
+
+export default PictureOfTheDay;

@@ -1,43 +1,47 @@
-import React, { Component } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Spinner from '../../../Spinner/Spinner';
 import Error from '../../../Error/Error';
-import { youTubeReg } from '../../../../constants/index';
+
 import NASAAPIService from '../../../../services/NASAAPIService';
+import { isVideoContent } from '../../../../utils/common';
+
 import styles from "./Preview.module.scss";
 
-export default class Preview extends Component {
-  nasaService = new NASAAPIService();
 
-  state = {
+const Preview = ({ date }) => {
+  const initialState = {
     url: null,
     title: '',
-    explanation: '',
-    loading: true,
-    error: false
+    explanation: ''
   };
 
-  componentDidMount() {
-    const { date } = this.props;
+  const nasaService = useMemo(() => new NASAAPIService(), []);
 
+  const [state, setState] = useState(initialState);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
     const url = localStorage.getItem(`${date}-url`);
     const title = localStorage.getItem(`${date}-title`);
 
     if (url) {
-      this.setState({
+      setState(prev => ({
+        ...prev,
         url,
-        title: title || '',
-        loading: false,
-        error: false
-      });
+        title: title || ''
+      }));
+      setLoading(false);
+      setError(false);
     } else {
-      this.nasaService
+      nasaService
         .getPictureOfTheDay(date)
-        .then(this.onPictureLoaded)
-        .catch(this.onError);
+        .then(onPictureLoaded)
+        .catch(onError);
     }
-  }
+  }, [date]);
 
-  onPictureLoaded = (picture) => {
+  const onPictureLoaded = (picture) => {
     const { date } = this.props;
 
     this.setState({
@@ -51,43 +55,34 @@ export default class Preview extends Component {
     localStorage.setItem(`${date}-title`, picture.title);
   };
 
-  onError = () => {
+  const onError = () => {
     this.setState({
       loading: false,
       error: true
     });
   };
 
-  isVideoContent(url) {
-    return youTubeReg.test(url);
-  }
+  const { url, title } = state;
 
-  render() {
-    const { url, title, loading, error } = this.state;
-    const { date } = this.props;
+  const pictureProps = { url, title, date };
 
-    const contentView = this.isVideoContent(url) ? <VideoView
-      url={url}
-    /> : <PictureView
-      url={url}
-      title={title}
-      date={date}
-    />;
+  const contentView = isVideoContent(url) ?
+    <VideoView url={url} /> :
+    <PictureView { ...pictureProps } />;
 
-    const hasDate = !(loading || error);
+  const hasDate = !(loading || error);
 
-    const errorMessage = error ? <Error /> : null;
-    const spinner = loading ? <Spinner /> : null;
-    const content = hasDate ? contentView : null;
+  const errorMessage = error ? <Error /> : null;
+  const spinner = loading ? <Spinner /> : null;
+  const content = hasDate ? contentView : null;
 
-    return (
-      <li className={styles.Preview}>
-        {errorMessage}
-        {spinner}
-        {content}
-      </li>
-    );
-  }
+  return (
+    <li className={styles.Preview}>
+      {errorMessage}
+      {spinner}
+      {content}
+    </li>
+  );
 };
 
 const PictureView = ({ url, title, date }) => {
@@ -112,3 +107,5 @@ const VideoView = ({ url }) => {
     </iframe>
   );
 };
+
+export default Preview;
