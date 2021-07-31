@@ -1,5 +1,6 @@
 .App {
   max-width: 1330px;
+  width: 100%;
 
   header {
     position: sticky;
@@ -7,5 +8,9 @@
     z-index: 1;
     padding: 1vw;
     background-color: #000;
+  }
+
+  main {
+    width: 100%;
   }
 }
