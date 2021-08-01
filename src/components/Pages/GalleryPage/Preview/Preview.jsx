@@ -7,7 +7,6 @@ import { isVideoContent } from '../../../../utils/common';
 
 import styles from "./Preview.module.scss";
 
-
 const Preview = ({ date }) => {
   const initialState = {
     url: null,
@@ -24,6 +23,9 @@ const Preview = ({ date }) => {
   useEffect(() => {
     const url = localStorage.getItem(`${date}-url`);
     const title = localStorage.getItem(`${date}-title`);
+
+    console.log('useEffect');
+    console.log('url', url);
 
     if (url) {
       setState(prev => ({
@@ -42,28 +44,24 @@ const Preview = ({ date }) => {
   }, [date]);
 
   const onPictureLoaded = (picture) => {
-    const { date } = this.props;
-
-    this.setState({
+    setState(prev => ({
+      ...prev,
       url: picture.url,
-      title: picture.title,
-      loading: false,
-      error: false
-    });
+      title: picture.title
+    }));
+    setLoading(false);
+    setError(false);
 
     localStorage.setItem(`${date}-url`, picture.url);
     localStorage.setItem(`${date}-title`, picture.title);
   };
 
   const onError = () => {
-    this.setState({
-      loading: false,
-      error: true
-    });
+    setLoading(false);
+    setError(true);
   };
 
   const { url, title } = state;
-
   const pictureProps = { url, title, date };
 
   const contentView = isVideoContent(url) ?

@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 2.5vw 1.5vw;
+  padding: 2.5vw 0;
   background-color: #000000dd;
 
   .image {
@@ -67,7 +67,7 @@
     .image,
     img {
       width: 70vw;
-      border: none;
+      margin-bottom: 20px;
     }
 
     .description {
