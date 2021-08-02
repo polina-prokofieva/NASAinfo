@@ -4,11 +4,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   padding: 2.5vw 0;
   background-color: #000000dd;
 
   .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     width: 30vw;
     box-sizing: border-box;
@@ -16,11 +19,15 @@
 
   img {
     width: 30vw;
+    margin-bottom: 6px;
     border: 5px solid peru;
     border-radius: 35px;
   }
 
   .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-sizing: border-box;
     padding: 0 0 0 3vw;
     width: 60vw;
@@ -39,6 +46,32 @@
         padding-top: 15px;
         text-align: right;
         margin: 0;
+      }
+    }
+  }
+
+  .currentDate {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 0 20px;
+    text-align: right;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    color: peru;
+
+    .today {
+      margin: 3px 0 0;
+      font-size: 1.5rem;
+    }
+
+    .yesterday,
+    .tomorrow {
+      padding: 0 7px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.9;
       }
     }
   }
