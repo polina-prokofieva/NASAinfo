@@ -30,9 +30,9 @@ const PictureOfTheDayView = ({
     <iframe { ...videoAttrs } src={`${url}&controls=0`} /> :
     <img alt={title} src={url} />;
 
-  console.log(isHTML);
-
-  const linkUrl = isHTML ? url : hdurl;
+  const next = !isToday(date) ?
+    <span className={ styles.tomorrow } onClick={ toNextDay }>▶</span> :
+    <span className={ styles.tomorrow }>&nbsp;</span>
 
   return (
     <React.Fragment>
@@ -43,9 +43,7 @@ const PictureOfTheDayView = ({
         <div className={styles.currentDate}>
           <span className={ styles.yesterday } onClick={ toPrevDay }>◀</span>
           <span className={ styles.today }>{ convertDateToString(date) }</span>
-          { !isToday(date) &&
-            <span className={ styles.tomorrow } onClick={ toNextDay }>▶</span>
-          }
+          { next }
         </div>
         <article className={styles.headerAndText}>
           <h2>{title}</h2>
@@ -53,7 +51,7 @@ const PictureOfTheDayView = ({
         </article>
         <p className="download">
           { !isVideo && !isHTML &&
-            <a href={linkUrl} target="_blank" rel="noopener noreferrer">Download HD</a>
+            <a href={hdurl} target="_blank" rel="noopener noreferrer">Download HD</a>
           }&nbsp;
           { isHTML && <a href={url} target="_blank">Go to picture of the day</a>}
         </p>

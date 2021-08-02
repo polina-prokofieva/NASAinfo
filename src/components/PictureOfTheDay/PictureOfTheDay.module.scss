@@ -3,7 +3,6 @@
   box-sizing: border-box;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: stretch;
   padding: 2.5vw 0;
   background-color: #000000dd;
@@ -25,12 +24,13 @@
   }
 
   .description {
+    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 0 0 0 3vw;
-    width: 60vw;
+    padding: 0 3vw;
+    width: 55vw;
 
     h2 {
       margin-top: 0;
@@ -62,13 +62,17 @@
     color: peru;
 
     .today {
+      width: 180px;
       margin: 3px 0 0;
       font-size: 1.5rem;
+      text-align: center;
     }
 
     .yesterday,
     .tomorrow {
+      width: 16px;
       padding: 0 7px;
+
       &:hover {
         cursor: pointer;
         opacity: 0.9;
