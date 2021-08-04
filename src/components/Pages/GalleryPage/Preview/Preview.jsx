@@ -1,20 +1,17 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Spinner from '../../../Spinner/Spinner';
 import Error from '../../../Error/Error';
 
-import NASAAPIService from '../../../../services/NASAAPIService';
 import { isVideoContent } from '../../../../utils/common';
 
 import styles from "./Preview.module.scss";
 
-const Preview = ({ date }) => {
+const Preview = ({ date, getPictureOfTheDay }) => {
   const initialState = {
     url: null,
     title: '',
     explanation: ''
   };
-
-  const nasaService = useMemo(() => new NASAAPIService(), []);
 
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(true);
@@ -36,8 +33,7 @@ const Preview = ({ date }) => {
       setLoading(false);
       setError(false);
     } else {
-      nasaService
-        .getPictureOfTheDay(date)
+      getPictureOfTheDay(date)
         .then(onPictureLoaded)
         .catch(onError);
     }

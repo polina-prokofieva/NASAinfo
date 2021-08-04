@@ -18,10 +18,6 @@ export default class NASAAPIService {
     return this.getResource('/planetary/apod', date && [`date=${date}`]);
   }
 
-  // getMarsWeather = async () => {
-  //   return this.getResource('/insight_weather/', ['feedtype=json', 'ver=1.0']);
-  // }
-
   getTransfer = async () => {
     return this.getResource('/techtransfer/patent/');
   }

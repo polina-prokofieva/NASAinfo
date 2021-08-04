@@ -2,19 +2,16 @@ import React, { useState, useMemo, useEffect } from 'react';
 import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
 import { isVideoContent, today } from '../../utils/common';
-import NASAAPIService from '../../services/NASAAPIService';
 import styles from './PictureOfTheDay.module.scss';
 
 
-const PictureOfTheDay = () => {
+const PictureOfTheDay = ({ getPictureOfTheDay }) => {
   const initialState = {
     url: null,
     title: '',
     explanation: '',
     hdurl: '*'
   };
-
-  const nasaService = useMemo(() => new NASAAPIService(), []);
 
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(true);
@@ -32,10 +29,10 @@ const PictureOfTheDay = () => {
   };
 
   useEffect(() => {
-    nasaService.getPictureOfTheDay()
+    getPictureOfTheDay()
       .then(onPictureLoaded)
       .catch(onError);
-  }, [nasaService]);
+  }, []);
 
   const { url, hdurl, title, explanation } = state;
 
