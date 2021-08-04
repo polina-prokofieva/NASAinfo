@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
 import { isVideoContent, today } from '../../utils/common';

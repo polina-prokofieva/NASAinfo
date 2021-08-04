@@ -21,9 +21,6 @@ const Preview = ({ date, getPictureOfTheDay }) => {
     const url = localStorage.getItem(`${date}-url`);
     const title = localStorage.getItem(`${date}-title`);
 
-    console.log('useEffect');
-    console.log('url', url);
-
     if (url) {
       setState(prev => ({
         ...prev,
