@@ -46,6 +46,7 @@ const App = () => {
           { routes.map(({ component: C, getData, ...otherProps }) => (
               <Route
                 { ...otherProps }
+                key={otherProps.path}
                 render={(props) => <C { ...props } getData={getData} />}
               />
           )) }
