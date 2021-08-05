@@ -1,76 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import Spinner from '../../../Spinner/Spinner';
-import Error from '../../../Error/Error';
-
+import React from 'react';
 import { isVideoContent } from '../../../../utils/common';
-
+import withData from '../../../hoc-helpers/withData';
 import styles from "./Preview.module.scss";
 
-const Preview = ({ date, getPictureOfTheDay }) => {
-  const initialState = {
-    url: null,
-    title: '',
-    explanation: ''
-  };
+const Preview = (data) => {
+  const { url } = data;
 
-  const [state, setState] = useState(initialState);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const url = localStorage.getItem(`${date}-url`);
-    const title = localStorage.getItem(`${date}-title`);
-
-    if (url) {
-      setState(prev => ({
-        ...prev,
-        url,
-        title: title || ''
-      }));
-      setLoading(false);
-      setError(false);
-    } else {
-      getPictureOfTheDay(date)
-        .then(onPictureLoaded)
-        .catch(onError);
-    }
-  }, [date]);
-
-  const onPictureLoaded = (picture) => {
-    setState(prev => ({
-      ...prev,
-      url: picture.url,
-      title: picture.title
-    }));
-    setLoading(false);
-    setError(false);
-
-    localStorage.setItem(`${date}-url`, picture.url);
-    localStorage.setItem(`${date}-title`, picture.title);
-  };
-
-  const onError = () => {
-    setLoading(false);
-    setError(true);
-  };
-
-  const { url, title } = state;
-  const pictureProps = { url, title, date };
-
-  const contentView = isVideoContent(url) ?
+  const content = isVideoContent(url) ?
     <VideoView url={url} /> :
-    <PictureView { ...pictureProps } />;
-
-  const hasDate = !(loading || error);
-
-  const errorMessage = error ? <Error /> : null;
-  const spinner = loading ? <Spinner /> : null;
-  const content = hasDate ? contentView : null;
+    <PictureView { ...data } />;
 
   return (
     <li className={styles.Preview}>
-      {errorMessage}
-      {spinner}
       {content}
     </li>
   );
@@ -99,4 +40,4 @@ const VideoView = ({ url }) => {
   );
 };
 
-export default Preview;
+export default withData(Preview);

@@ -57,9 +57,8 @@ class GalleryPage extends Component {
           </div>
           <ul className={styles.content}>
             { dates.map((date) => <Preview
-              date={date}
               key={date}
-              getPictureOfTheDay={ getData }
+              getData={() => getData(date)}
             />) }
           </ul>
         </main>

@@ -5,7 +5,7 @@ import styles from './HomePage.module.scss';
 const HomePage = ({ getData }) => {
   return (
     <main className={styles.HomePage} id="homePage">
-      <PictureOfTheDay getPictureOfTheDay={ getData } />
+      <PictureOfTheDay getData={getData} />
     </main>
   );
 };
