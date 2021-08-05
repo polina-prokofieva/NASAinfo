@@ -1,31 +1,31 @@
-import React from 'react';
-import { isVideoContent, today } from '../../utils/common';
+import React, { useContext, useMemo } from 'react';
 import withData from '../hoc-helpers/withData';
 import { isVideoContent, isHTMLContent, videoAttrs } from '../../utils/common';
-import {
-    today, isToday, convertDateToString,
-    getNextDay, getPrevDay,
-    formatDate } from '../../utils/dateUtils';
+import { isToday, convertDateToString } from '../../utils/dateUtils';
+import { SwitchDayContext } from '../Pages/HomePage/HomePage';
 import styles from './PictureOfTheDay.module.scss';
 
-
 const PictureOfTheDay = ({ data }) => {
-  const content = isVideoContent(data.url) ?
-    <VideoView { ...data } /> :
-    <PictureView { ...data } />; 
+  const { url } = data;
+
+  const isVideo = useMemo(() => isVideoContent(url), [url]); 
+  const isHTML = useMemo(() => isHTMLContent(url), [url]); 
+
+  const viewProps = { ...data, isVideo, isHTML };
   
   return (
     <section className={styles.PictureOfTheDay}>
-      {content}
+      <PictureOfTheDayView { ...viewProps } />
     </section>
   );
 };
 
 const PictureOfTheDayView = ({
-  date, url, hdurl, title, explanation,
-  isVideo, isHTML,
-  toPrevDay, toNextDay
+  url, hdurl, title, explanation,
+  isVideo, isHTML
 }) => {
+  const { date, toPrevDay, toNextDay } = useContext(SwitchDayContext);
+
   const graphic = isVideo ?
     <iframe { ...videoAttrs } src={`${url}&controls=0`} /> :
     <img alt={title} src={url} />;
