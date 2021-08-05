@@ -1,10 +1,7 @@
-import React, { useMemo } from 'react';
-import NASAAPIService from '../../../services/NASAAPIService';
+import React from 'react';
 import styles from './TransferPage.module.scss';
 
-const TransferPage = () => {
-  const nasaService = useMemo(() => new NASAAPIService(), [null]);
-
+const TransferPage = ({ getData }) => {
   return (
     <main className={ styles.TransferPage }>
       <h5>TransferPage</h5>

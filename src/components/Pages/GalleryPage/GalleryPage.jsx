@@ -46,6 +46,7 @@ class GalleryPage extends Component {
 
   render() {
     const { dates } = this.state;
+    const { getData } = this.props;
 
     return (
       <ErrorBoundry>
@@ -55,7 +56,10 @@ class GalleryPage extends Component {
             <SelectMonth />
           </div>
           <ul className={styles.content}>
-            {dates.map((date) => <Preview date={date} key={date} />)}
+            { dates.map((date) => <Preview
+              key={date}
+              getData={() => getData(date)}
+            />) }
           </ul>
         </main>
       </ErrorBoundry>
