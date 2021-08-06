@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import withData from '../../hoc-helpers/withData';
+import { isScrolledToBottom } from '../../../utils/scrollUtils';
 import styles from './TransferPage.module.scss';
 
 const TransferPage = ({ data }) => {
@@ -8,8 +9,18 @@ const TransferPage = ({ data }) => {
     post[0] && post[2] && post[3] && post[10]
   );
 
-  const posts = onlyFullData.slice(0, 10);
+  const [posts, setPosts] = useState(onlyFullData.slice(0, 2));
 
+  const onScroll = useCallback(() => {    
+    if (isScrolledToBottom()) {
+      setPosts(prev => ([ ...prev, onlyFullData[prev.length] ]));
+    }
+  }, []);
+  
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+  }, [onScroll]);
+   
   return (
     <main className={ styles.TransferPage }>
       { posts.map(post => (
@@ -21,6 +32,7 @@ const TransferPage = ({ data }) => {
           image={post[10]}
         />
       ))}
+      <div className={styles.placeholder}></div>
     </main>
   );
 };
@@ -46,6 +58,6 @@ const TransferArticle = ({ title, text, category, image }) => {
       </div>
     </div>
   );
-}
- 
+};
+
 export default withData(TransferPage);
