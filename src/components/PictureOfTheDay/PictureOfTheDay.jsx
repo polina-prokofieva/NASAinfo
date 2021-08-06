@@ -36,9 +36,9 @@ const PictureOfTheDayView = ({
 
   return (
     <React.Fragment>
-      { !isHTML && <div className={styles.image}>
+      { !isHTML && <figure className={styles.image}>
         { graphic }
-      </div> }
+      </figure> }
       <div className={styles.description}>
         <div className={styles.currentDate}>
           <span className={ styles.yesterday } onClick={ toPrevDay }>◀</span>
