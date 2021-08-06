@@ -9,6 +9,7 @@ body {
 body {
   font-family: "Trebuchet MS", Verdana, sans-serif;
   color: antiquewhite;
+  overflow-x: hidden;
 }
 
 div,
@@ -40,7 +41,8 @@ a:hover {
 #root {
   display: flex;
   justify-content: center;
-  background: black url('media/JupiterClouds_JunoGill_960.jpg') center bottom no-repeat;
+  background: black url("media/JupiterClouds_JunoGill_960.jpg") center bottom
+    no-repeat;
   background-attachment: fixed;
   min-height: 100%;
 }
