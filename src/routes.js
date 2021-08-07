@@ -14,7 +14,7 @@ const routes = [
   }, {
     name: 'Gallery',
     component: GalleryPage,
-    getData: nasaService.getPictureOfTheDay
+    getData: nasaService.getImages
   }, {
     name: 'Transfer',
     component: TransferPage,

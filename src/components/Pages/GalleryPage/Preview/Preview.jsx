@@ -1,43 +1,31 @@
 import React from 'react';
-import { isVideoContent } from '../../../../utils/common';
-import withData from '../../../hoc-helpers/withData';
 import styles from "./Preview.module.scss";
 
-const Preview = (data) => {
-  const { url } = data;
-
-  const content = isVideoContent(url) ?
-    <VideoView url={url} /> :
-    <PictureView { ...data } />;
+const Preview = ({
+  url, location, center, description, title, date_created, ...data
+}) => {
+  console.log(data);
+  const content = {
+    location, center, title,
+    date: new Date(date_created).toString()
+  };
 
   return (
     <li className={styles.Preview}>
-      {content}
+      <img alt={location} src={url} />
+      <div className={styles.description}>
+        <ul className={styles.list}>
+          { Object.keys(content).map(key => (
+            <li key={key} className={styles.listItem}>
+              <span className={styles.key}>{key}: </span>
+              <span className={styles.value}>{content[key]}</span>
+            </li>
+          )) }
+        </ul>
+        <p className={styles.text}>{description}</p>
+      </div>
     </li>
   );
 };
 
-const PictureView = ({ url, title, date }) => {
-  return (
-    <img
-      title={`${date} ${title}`}
-      alt={title}
-      src={url}
-    />
-  );
-};
-
-const VideoView = ({ url }) => {
-  const modifiedUrl = `${url}&controls=0`;
-  return (
-    <iframe src={modifiedUrl}
-            title="Picture Of The Day Preview"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
-            allowFullScreen
-    >
-    </iframe>
-  );
-};
-
-export default withData(Preview);
+export default Preview;

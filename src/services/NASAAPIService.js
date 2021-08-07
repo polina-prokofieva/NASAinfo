@@ -1,17 +1,22 @@
 export default class NASAAPIService {
   _apiBase = 'https://api.nasa.gov';
+  _apiImages = 'https://images-api.nasa.gov/search?media_type=image&page=1';
   _apiKey = 'Z1FMxuzDUZu2v1JXYMHQSg40SzLpgua05AfFeELa';
   _apiKeyParam = `api_key=${this._apiKey}`;
 
+  catchError = (result, url) => {
+    if (!result.ok) {
+      throw new Error(`Could not fetch ${url}, received ${result.status}`);
+    }
+  }
+
   getResource = async (url, params = []) => {
     const fullUrl = `${this._apiBase}${url}?${params.concat([this._apiKeyParam]).join('&')}`
-    const res = await fetch(fullUrl);
+    const result = await fetch(fullUrl);
 
-    if (!res.ok) {
-      throw new Error(`Could not fetch ${fullUrl}, received ${res.status}`);
-    }
+    this.catchError(result, fullUrl);
 
-    return await res.json();
+    return await result.json();
   }
 
   getPictureOfTheDay = async (date) => {
@@ -20,5 +25,13 @@ export default class NASAAPIService {
 
   getTransfer = async () => {
     return this.getResource('/techtransfer/patent/');
+  }
+
+  getImages = async () => {
+    const images = await fetch(this._apiImages);
+
+    this.catchError(images, this._apiImages);
+
+    return await images.json();
   }
 }
