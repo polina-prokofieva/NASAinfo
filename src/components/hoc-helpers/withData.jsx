@@ -23,7 +23,7 @@ const withData = (View) => {
       getData()
         .then(onDataLoaded)
         .catch(onError);
-    }, []);
+    }, [getData]);
   
     if (loading) {
       return <Spinner />;
