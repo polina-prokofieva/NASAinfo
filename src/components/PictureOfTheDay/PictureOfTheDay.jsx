@@ -1,56 +1,60 @@
-import React from 'react';
-import { isVideoContent, today } from '../../utils/common';
+import React, { useContext, useMemo } from 'react';
 import withData from '../hoc-helpers/withData';
+import { isVideoContent, isHTMLContent, videoAttrs } from '../../utils/common';
+import { isToday, convertDateToString } from '../../utils/dateUtils';
+import { SwitchDayContext } from '../Pages/HomePage/HomePage';
 import styles from './PictureOfTheDay.module.scss';
 
-
 const PictureOfTheDay = ({ data }) => {
-  const content = isVideoContent(data.url) ?
-    <VideoView { ...data } /> :
-    <PictureView { ...data } />; 
+  const { url } = data;
+
+  const isVideo = useMemo(() => isVideoContent(url), [url]); 
+  const isHTML = useMemo(() => isHTMLContent(url), [url]); 
+
+  const viewProps = { ...data, isVideo, isHTML };
   
   return (
     <section className={styles.PictureOfTheDay}>
-      {content}
+      <PictureOfTheDayView { ...viewProps } />
     </section>
   );
 };
 
-const PictureView = ({ url, hdurl, title, explanation, date = today }) => {
+const PictureOfTheDayView = ({
+  url, hdurl, title, explanation,
+  isVideo, isHTML
+}) => {
+  const { date, toPrevDay, toNextDay } = useContext(SwitchDayContext);
+
+  const graphic = isVideo ?
+    <iframe { ...videoAttrs } src={`${url}&controls=0`} /> :
+    <img alt={title} src={url} />;
+
+  const next = !isToday(date) ?
+    <span className={ styles.tomorrow } onClick={ toNextDay }>▶</span> :
+    <span className={ styles.tomorrow }>&nbsp;</span>
+
   return (
     <React.Fragment>
-      <div className={styles.image}>
-        <img
-          alt={title}
-          src={url}
-        />
-      </div>      
+      { !isHTML && <figure className={styles.image}>
+        { graphic }
+      </figure> }
       <div className={styles.description}>
-        <h2>{title}</h2>
-        <p>{explanation}</p>
-        <p className="download"><a href={hdurl} target="_blank" rel="noopener noreferrer">Download HD</a></p>
-      </div>
-    </React.Fragment>
-  );
-};
-
-const VideoView = ({ url, title, explanation }) => {
-  const modifiedUrl = `${url}&controls=0`;
-  return (
-    <React.Fragment>
-      <div className={styles.image}>
-        <iframe src={modifiedUrl}
-                title="Picture Of The Day"
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-        >
-        </iframe>
-
-      </div>
-      <div className={styles.description}>
-        <h2>{title}</h2>
-        <p>{explanation}</p>
+        <div className={styles.currentDate}>
+          <span className={ styles.yesterday } onClick={ toPrevDay }>◀</span>
+          <span className={ styles.today }>{ convertDateToString(date) }</span>
+          { next }
+        </div>
+        <article className={styles.headerAndText}>
+          <h2>{title}</h2>
+          <p>{explanation}</p>
+        </article>
+        <p className="download">
+          { !isVideo && !isHTML &&
+            <a href={hdurl} target="_blank" rel="noopener noreferrer">Download HD</a>
+          }&nbsp;
+          { isHTML && <a href={url} target="_blank">Go to picture of the day</a>}
+        </p>
       </div>
     </React.Fragment>
   );
