@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -6,17 +7,24 @@ html, body {
 }
 
 body {
-  font-family: "Trebuchet MS", Verdana, sans-serif;;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
   color: antiquewhite;
+  overflow-x: hidden;
 }
 
-div {
+div,
+figure {
   margin: 0;
   padding: 0;
 }
 
-div, p, li, ul {
+div,
+p,
+li,
+ul {
   box-sizing: border-box;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
 }
 
 a {
@@ -33,11 +41,12 @@ a:hover {
 #root {
   display: flex;
   justify-content: center;
-  background: black url('media/JupiterClouds_JunoGill_960.jpg') center bottom no-repeat;
+  background: black url("media/JupiterClouds_JunoGill_960.jpg") center bottom
+    no-repeat;
+  background-attachment: fixed;
   min-height: 100%;
 }
 
 h2 {
   font-size: 2.6rem;
 }
-
