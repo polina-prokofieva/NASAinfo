@@ -17,5 +17,6 @@ const getClasses = classList => classList.reduce((acc, className) => {
 export {
   videoAttrs,
   isVideoContent,
+  isHTMLContent,
   getClasses
 };
