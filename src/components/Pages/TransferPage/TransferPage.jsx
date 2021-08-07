@@ -11,22 +11,19 @@ const TransferPage = ({ data }) => {
     post[0] && post[2] && post[3] && post[10]
   ), [results]);
   
-  const [posts, setPosts] = useState(onlyFullData.slice(0, 2));
-
+  const [posts, setPosts] = useState([onlyFullData[0]]);
   const isPlaceholder = posts.length < onlyFullData.length;
 
   const onScroll = useCallback(() => {
-    if (posts.length >= onlyFullData.length) {
+    if(posts.length >= onlyFullData.length) {
       window.removeEventListener('scroll', onScroll);
       return;
     }
+
     if (isScrolledToBottom()) {
-      setPosts(prev => {
-        console.log('prev', prev);
-        return ([ ...prev, onlyFullData[prev.length] ]);
-      });
+      setPosts(prev => ([ ...prev, onlyFullData[prev.length] ]));
     }
-  }, [onlyFullData]);
+  }, [onlyFullData, posts]);
   
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
@@ -36,6 +33,10 @@ const TransferPage = ({ data }) => {
     }
   }, [onScroll]);
   
+  useEffect(() => {
+    onScroll();
+  });
+
   return (
     <ErrorBoundry>
       <main className={ styles.TransferPage }>
