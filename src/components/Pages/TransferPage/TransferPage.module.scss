@@ -22,10 +22,12 @@
   border-radius: 30px;
   box-shadow: 0px 0px 15px 7px #000;
   transform: translateX(-100vw);
-  transition: transform 1s;
+  transition: transform 1s, opacity 1s;
+  opacity: 0;
 
   &.rendered {
     transform: translateX(0);
+    opacity: 1;
   }
 
   &:nth-child(odd) {
@@ -33,6 +35,7 @@
 
     &.rendered {
       transform: translateX(0);
+      opacity: 1;
     }
 
     .content {
