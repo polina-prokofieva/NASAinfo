@@ -8,6 +8,7 @@ const nasaService = new NASAAPIService();
 
 const routes = [
   {
+    path: '/',
     name: 'Home',
     component: HomePage,
     getData: nasaService.getPictureOfTheDay
@@ -23,7 +24,7 @@ const routes = [
 ];
 
 routes.forEach(page => {
-  page.path = `/${page.name.toLowerCase()}`;
+  page.path = page.path || `/${page.name.toLowerCase()}`;
 });
 
 export { routes };

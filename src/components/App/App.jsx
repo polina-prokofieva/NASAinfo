@@ -19,7 +19,7 @@ const App = () => {
               { ...otherProps }
               key={name}
               render={(props) => <C { ...props } getData={getData}
-              exact
+              exact={true}
             />}
             />
           )) }
