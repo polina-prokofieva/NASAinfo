@@ -10,6 +10,14 @@
 
     li {
       list-style: none;
+      transform: translateY(-65px);
+      opacity: 0;
+      transition: transform 1s, opacity 1s;
+
+      &.rendered {
+        transform: translateY(0);
+        opacity: 1;
+      }
 
       a {
         margin: 0.5vw;
