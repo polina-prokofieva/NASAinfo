@@ -1,5 +1,7 @@
 .TransferArticle {
   $gap: 20px;
+  $translate: 10vw;
+
   display: flex;
   flex-direction: column;
   margin: 15px;
@@ -9,7 +11,7 @@
   border: 3px #333 solid;
   border-radius: 30px;
   box-shadow: 0px 0px 15px 7px #000;
-  transform: translateX(-100vw);
+  transform: translateX(-$translate);
   transition: transform 1s, opacity 1s;
   opacity: 0;
 
@@ -19,7 +21,7 @@
   }
 
   &:nth-child(odd) {
-    transform: translateX(100vw);
+    transform: translateX($translate);
 
     &.rendered {
       transform: translateX(0);
