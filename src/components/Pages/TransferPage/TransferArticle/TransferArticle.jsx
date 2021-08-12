@@ -6,9 +6,6 @@ import styles from './TransferArticle.module.scss';
 const TransferArticle = ({ title, text, category, image, classNames }) => {
   const classes = getClassNamesFromStyles(classNames, styles);
 
-  console.log(classNames);
-  console.log(classes);
-
   return (
     <div className={classes}>
       <h3 className={styles.title}>{title}</h3>

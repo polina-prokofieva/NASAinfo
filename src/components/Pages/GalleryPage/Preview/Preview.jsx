@@ -4,7 +4,6 @@ import styles from "./Preview.module.scss";
 const Preview = ({
   url, location, center, description, title, date_created, ...data
 }) => {
-  console.log(data);
   const content = {
     location, center, title,
     date: new Date(date_created).toString()
