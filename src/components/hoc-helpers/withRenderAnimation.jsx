@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 const withRenderAnimation = (View) => {
   return ({
-    delay = 0,
-    ...other
+    delay = 200,
+    ...otherProps
   }) => {
     const [classNames, setClassNames] = useState([View.name]);
 
@@ -15,7 +15,7 @@ const withRenderAnimation = (View) => {
     }, []);
 
     const viewProps = {
-      ...other,
+      ...otherProps,
       classNames
     };
 
