@@ -18,9 +18,7 @@ const App = () => {
             <Route
               { ...otherProps }
               key={name}
-              render={(props) => <C { ...props } getData={getData}
-              exact={true}
-            />}
+              render={(props) => <C { ...props } getData={getData} />}
             />
           )) }
 

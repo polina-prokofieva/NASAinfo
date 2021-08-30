@@ -11,7 +11,8 @@ const routes = [
     path: '/',
     name: 'Home',
     component: HomePage,
-    getData: nasaService.getPictureOfTheDay
+    getData: nasaService.getPictureOfTheDay,
+    exact: true
   }, {
     name: 'Gallery',
     component: GalleryPage,
