@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/NASAinfo/static/css/main.0fe7cfe9.chunk.css",
-    "main.js": "/NASAinfo/static/js/main.1a4c121f.chunk.js",
-    "main.js.map": "/NASAinfo/static/js/main.1a4c121f.chunk.js.map",
+    "main.css": "/NASAinfo/static/css/main.888908bb.chunk.css",
+    "main.js": "/NASAinfo/static/js/main.926791dc.chunk.js",
+    "main.js.map": "/NASAinfo/static/js/main.926791dc.chunk.js.map",
     "runtime-main.js": "/NASAinfo/static/js/runtime-main.993a3dcb.js",
     "runtime-main.js.map": "/NASAinfo/static/js/runtime-main.993a3dcb.js.map",
-    "static/js/2.14d0bb85.chunk.js": "/NASAinfo/static/js/2.14d0bb85.chunk.js",
-    "static/js/2.14d0bb85.chunk.js.map": "/NASAinfo/static/js/2.14d0bb85.chunk.js.map",
+    "static/js/2.a0fb0066.chunk.js": "/NASAinfo/static/js/2.a0fb0066.chunk.js",
+    "static/js/2.a0fb0066.chunk.js.map": "/NASAinfo/static/js/2.a0fb0066.chunk.js.map",
     "index.html": "/NASAinfo/index.html",
-    "precache-manifest.9da6275e8a15fa4ada05c6f4758acc8b.js": "/NASAinfo/precache-manifest.9da6275e8a15fa4ada05c6f4758acc8b.js",
+    "precache-manifest.908a2f286928b6f44003aeee7b7dbbfb.js": "/NASAinfo/precache-manifest.908a2f286928b6f44003aeee7b7dbbfb.js",
     "service-worker.js": "/NASAinfo/service-worker.js",
-    "static/css/main.0fe7cfe9.chunk.css.map": "/NASAinfo/static/css/main.0fe7cfe9.chunk.css.map",
-    "static/js/2.14d0bb85.chunk.js.LICENSE.txt": "/NASAinfo/static/js/2.14d0bb85.chunk.js.LICENSE.txt",
+    "static/css/main.888908bb.chunk.css.map": "/NASAinfo/static/css/main.888908bb.chunk.css.map",
+    "static/js/2.a0fb0066.chunk.js.LICENSE.txt": "/NASAinfo/static/js/2.a0fb0066.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/NASAinfo/static/media/JupiterClouds_JunoGill_960.80823135.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.993a3dcb.js",
-    "static/js/2.14d0bb85.chunk.js",
-    "static/css/main.0fe7cfe9.chunk.css",
-    "static/js/main.1a4c121f.chunk.js"
+    "static/js/2.a0fb0066.chunk.js",
+    "static/css/main.888908bb.chunk.css",
+    "static/js/main.926791dc.chunk.js"
   ]
 }
