@@ -7,35 +7,6 @@
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
-
-    li {
-      list-style: none;
-
-      a {
-        margin: 0.5vw;
-        padding: 1vw 2vw;
-        text-decoration: none;
-        color: #6893b7;
-        font-size: 1.8rem;
-        border: none;
-        border-radius: 15px;
-        background-color: #33333388;
-        transition: all 0.5s ease-in;
-
-        &:hover {
-          padding: 1.3vw 2.6vw;
-          color: #6893b7;
-          background-color: #333333dd;
-          transition: all 0.1s ease-in;
-        }
-
-        span {
-          text-decoration: none;
-          color: #6893b7;
-          font-size: 2.2rem;
-        }
-      }
-    }
   }
 
   .selected {

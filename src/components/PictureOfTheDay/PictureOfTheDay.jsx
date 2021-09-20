@@ -1,28 +1,36 @@
 import React, { useContext, useMemo } from 'react';
 import withData from '../hoc-helpers/withData';
+import withRenderAnimation from '../hoc-helpers/withRenderAnimation';
 import { isVideoContent, isHTMLContent, videoAttrs } from '../../utils/common';
 import { isToday, convertDateToString } from '../../utils/dateUtils';
 import { SwitchDayContext } from '../Pages/HomePage/HomePage';
+import { getClassNamesFromStyles } from '../../utils/common';
 import styles from './PictureOfTheDay.module.scss';
 
-const PictureOfTheDay = ({ data }) => {
+const PictureOfTheDay = ({ data, classNames }) => {
   const { url } = data;
 
   const isVideo = useMemo(() => isVideoContent(url), [url]); 
   const isHTML = useMemo(() => isHTMLContent(url), [url]); 
 
   const viewProps = { ...data, isVideo, isHTML };
+
+  const classes = getClassNamesFromStyles(classNames, styles);
   
   return (
-    <section className={styles.PictureOfTheDay}>
+    <section className={classes}>
       <PictureOfTheDayView { ...viewProps } />
     </section>
   );
 };
 
 const PictureOfTheDayView = ({
-  url, hdurl, title, explanation,
-  isVideo, isHTML
+  url,
+  hdurl,
+  title,
+  explanation,
+  isVideo,
+  isHTML
 }) => {
   const { date, toPrevDay, toNextDay } = useContext(SwitchDayContext);
 
@@ -35,19 +43,19 @@ const PictureOfTheDayView = ({
     <span className={ styles.tomorrow }>&nbsp;</span>
 
   return (
-    <React.Fragment>
+    <>
       { !isHTML && <figure className={styles.image}>
         { graphic }
       </figure> }
       <div className={styles.description}>
         <div className={styles.currentDate}>
-          <span className={ styles.yesterday } onClick={ toPrevDay }>◀</span>
-          <span className={ styles.today }>{ convertDateToString(date) }</span>
+          <span className={styles.yesterday} onClick={toPrevDay}>◀</span>
+          <span className={styles.today}>{ convertDateToString(date) }</span>
           { next }
         </div>
         <article className={styles.headerAndText}>
-          <h2>{title}</h2>
-          <p>{explanation}</p>
+          <h2 className={styles.title}>{title}</h2>
+          <p className={styles.text}>{explanation}</p>
         </article>
         <p className="download">
           { !isVideo && !isHTML &&
@@ -56,8 +64,8 @@ const PictureOfTheDayView = ({
           { isHTML && <a href={url} target="_blank">Go to picture of the day</a>}
         </p>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
-export default withData(PictureOfTheDay);
+export default withData(withRenderAnimation(PictureOfTheDay));

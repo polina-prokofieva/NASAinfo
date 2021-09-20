@@ -1,19 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { topRoutes } from '../../routes';
+import { routes } from '../../routes';
+import MenuItem from './MenuItem/MenuItem';
 import styles from './TopMenu.module.scss';
 
 const TopMenu = () => {
   return (
     <nav className={styles.TopMenu}>
       <ul>
-        { topRoutes.map(({name, path}) => (
-          <li key={name}>
-            <NavLink to={path} activeClassName={styles.selected}>
-              <span>{name}</span>
-            </NavLink>
-          </li>
-        )) }
+        { routes
+          .filter(route => route.top)
+          .map((route, i) => (
+            <MenuItem
+              key={ route.name }
+              {...route}
+              delay={i * 300} />
+          )) }
       </ul>
     </nav>
   );

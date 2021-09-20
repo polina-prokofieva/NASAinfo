@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback , useMemo} from 'react';
 import withData from '../../hoc-helpers/withData';
 import { isScrolledToBottom } from '../../../utils/scrollUtils';
-import { getClasses } from '../../../utils/common';
+import TransferArticle from './TransferArticle/TransferArticle';
 import ErrorBoundry from '../../ErrorBoundry/ErrorBoundry';
 import styles from './TransferPage.module.scss';
 
@@ -52,37 +52,6 @@ const TransferPage = ({ data }) => {
         { isPlaceholder && <div className={styles.placeholder}></div> }
       </main>
     </ErrorBoundry>
-  );
-};
-
-const TransferArticle = ({ title, text, category, image }) => {
-  const [classesList, setClassesList] = useState([styles.TransferArticle]);
-
-  useEffect(() => {
-    setClassesList(prev => [ ...prev, styles.rendered ]);
-  }, []);
-
-  const classes = getClasses(classesList);
-
-  return (
-    <div className={classes}>
-      <h3 className={styles.title}>{title}</h3>
-
-      <div className={styles.content}>
-        { image && <figure>
-          <img src={image} alt={title} />
-        </figure> }
-
-        <article>
-          <p className={styles.text}>{text}</p>
-          <p className={styles.category}>
-            <span>
-              {category}
-            </span>
-          </p>
-        </article>
-      </div>
-    </div>
   );
 };
 
