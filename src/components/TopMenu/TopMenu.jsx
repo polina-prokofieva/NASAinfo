@@ -7,12 +7,14 @@ const TopMenu = () => {
   return (
     <nav className={styles.TopMenu}>
       <ul>
-        { routes.map((route, i) => (
-          <MenuItem
-            key={ route.name }
-            {...route}
-            delay={i * 300} />
-        )) }
+        { routes
+          .filter(route => route.top)
+          .map((route, i) => (
+            <MenuItem
+              key={ route.name }
+              {...route}
+              delay={i * 300} />
+          )) }
       </ul>
     </nav>
   );
