@@ -9,7 +9,7 @@ const withRenderAnimation = (View, mainClassName) => {
 
     useEffect(() => {
       setTimeout(
-        () => setClassNames([View.name, 'rendered']),
+        () => setClassNames(prev => [...prev, 'rendered']),
         delay
       );
     }, []);
