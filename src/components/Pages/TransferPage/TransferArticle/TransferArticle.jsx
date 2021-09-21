@@ -28,4 +28,4 @@ const TransferArticle = ({ title, text, category, image, classNames }) => {
   );
 };
 
-export default withRenderAnimation(TransferArticle);
+export default withRenderAnimation(TransferArticle, 'TransferArticle');

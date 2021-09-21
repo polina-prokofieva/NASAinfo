@@ -14,10 +14,10 @@ const App = () => {
             <TopMenu/>
           </header>
 
-          { routes.map(({ name, component: C, getData, ...otherProps }) => (
+          { routes.map(({ name, component: C, getData, ...otherProps }, ind) => (
             <Route
               { ...otherProps }
-              key={name}
+              key={`${name}-${ind}`}
               render={(props) => <C { ...props } getData={getData} />}
             />
           )) }

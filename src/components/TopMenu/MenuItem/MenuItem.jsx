@@ -7,6 +7,8 @@ import styles from './MenuItem.module.scss';
 const MenuItem = ({ name, path, classNames }) => {
   const classes = getClassNamesFromStyles(classNames, styles);
 
+  console.log(classes);
+
   return (
     <li className={ classes }>
       <NavLink to={path} activeClassName={styles.selected}>
@@ -16,4 +18,4 @@ const MenuItem = ({ name, path, classNames }) => {
   );
 };
 
-export default withRenderAnimation(MenuItem);
+export default withRenderAnimation(MenuItem, 'MenuItem');

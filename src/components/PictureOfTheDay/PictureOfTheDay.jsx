@@ -68,4 +68,4 @@ const PictureOfTheDayView = ({
   );
 };
 
-export default withData(withRenderAnimation(PictureOfTheDay));
+export default withData(withRenderAnimation(PictureOfTheDay, 'PictureOfTheDay'));
