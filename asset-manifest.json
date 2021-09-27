@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/NASAinfo/static/css/main.1c8d28d0.chunk.css",
+    "main.css": "/NASAinfo/static/css/main.ed5b23ac.chunk.css",
     "main.js": "/NASAinfo/static/js/main.ff46f2eb.chunk.js",
     "main.js.map": "/NASAinfo/static/js/main.ff46f2eb.chunk.js.map",
     "runtime-main.js": "/NASAinfo/static/js/runtime-main.993a3dcb.js",
@@ -8,16 +8,16 @@
     "static/js/2.2c6ef75e.chunk.js": "/NASAinfo/static/js/2.2c6ef75e.chunk.js",
     "static/js/2.2c6ef75e.chunk.js.map": "/NASAinfo/static/js/2.2c6ef75e.chunk.js.map",
     "index.html": "/NASAinfo/index.html",
-    "precache-manifest.7b828abaaac2360d33db9435434bdd91.js": "/NASAinfo/precache-manifest.7b828abaaac2360d33db9435434bdd91.js",
+    "precache-manifest.af76c7e6b291a392f2d71f08c6226cb8.js": "/NASAinfo/precache-manifest.af76c7e6b291a392f2d71f08c6226cb8.js",
     "service-worker.js": "/NASAinfo/service-worker.js",
-    "static/css/main.1c8d28d0.chunk.css.map": "/NASAinfo/static/css/main.1c8d28d0.chunk.css.map",
+    "static/css/main.ed5b23ac.chunk.css.map": "/NASAinfo/static/css/main.ed5b23ac.chunk.css.map",
     "static/js/2.2c6ef75e.chunk.js.LICENSE.txt": "/NASAinfo/static/js/2.2c6ef75e.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/NASAinfo/static/media/JupiterClouds_JunoGill_960.80823135.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.993a3dcb.js",
     "static/js/2.2c6ef75e.chunk.js",
-    "static/css/main.1c8d28d0.chunk.css",
+    "static/css/main.ed5b23ac.chunk.css",
     "static/js/main.ff46f2eb.chunk.js"
   ]
 }
