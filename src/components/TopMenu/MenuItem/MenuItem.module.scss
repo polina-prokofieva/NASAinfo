@@ -14,7 +14,7 @@ li.MenuItem {
 
   a {
     margin: 0.5vw;
-    padding: 1vw 2vw;
+    padding: 1.3vw 2vw 1vw;
     text-decoration: none;
     color: $mainMenuColor;
     font-size: 1.8rem;
@@ -24,7 +24,7 @@ li.MenuItem {
     transition: all 0.5s ease-in;
 
     &:hover {
-      padding: 1.3vw 2.6vw;
+      padding: 1.6vw 2.6vw 1.3vw;
       color: $mainMenuColor;
       background-color: $mainMenuBgColor;
       transition: all 0.1s ease-in;
