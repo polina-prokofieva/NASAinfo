@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { getClassNamesFromStyles } from '../../../utils/common';
+import classNames from 'classnames';
 import withRenderAnimation from '../../hoc-helpers/withRenderAnimation';
 import styles from './MenuItem.module.scss';
 
-const MenuItem = ({ name, path, classNames }) => {
-  const classes = getClassNamesFromStyles(classNames, styles);
-
-  console.log(classes);
+const MenuItem = ({ name, path, rendered }) => {
+  const classes = classNames({
+    [styles.MenuItem]: true,
+    [styles.rendered]: rendered
+  });
 
   return (
     <li className={ classes }>
@@ -18,4 +19,4 @@ const MenuItem = ({ name, path, classNames }) => {
   );
 };
 
-export default withRenderAnimation(MenuItem, 'MenuItem');
+export default withRenderAnimation(MenuItem);

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
-const withRenderAnimation = (View, mainClassName) => {
+const withRenderAnimation = (View) => {
   return ({
     delay = 200,
     ...otherProps
   }) => {
-    const [classNames, setClassNames] = useState([mainClassName]);
+    const [rendered, setRendered] = useState(false);
 
     useEffect(() => {
       setTimeout(
-        () => setClassNames(prev => [...prev, 'rendered']),
+        () => setRendered(true),
         delay
       );
     }, []);
 
     const viewProps = {
       ...otherProps,
-      classNames
+      rendered
     };
 
     return <View { ...viewProps } />

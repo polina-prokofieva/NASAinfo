@@ -1,11 +1,14 @@
 import React from 'react';
-import { getClassNamesFromStyles } from '../../../../utils/common';
 import withRenderAnimation from '../../../hoc-helpers/withRenderAnimation';
+import classNames from 'classnames';
 import styles from './TransferArticle.module.scss';
 
-const TransferArticle = ({ title, text, category, image, classNames }) => {
-  const classes = getClassNamesFromStyles(classNames, styles);
-
+const TransferArticle = ({ title, text, category, image, rendered }) => {
+  const classes = classNames({
+    [styles.TransferArticle]: true,
+    [styles.rendered]: rendered
+  });
+  
   return (
     <div className={classes}>
       <h3 className={styles.title}>{title}</h3>
@@ -28,4 +31,4 @@ const TransferArticle = ({ title, text, category, image, classNames }) => {
   );
 };
 
-export default withRenderAnimation(TransferArticle, 'TransferArticle');
+export default withRenderAnimation(TransferArticle);

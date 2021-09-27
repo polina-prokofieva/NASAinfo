@@ -1,13 +1,13 @@
 import React, { useContext, useMemo } from 'react';
 import withData from '../hoc-helpers/withData';
+import classNames from 'classnames';
 import withRenderAnimation from '../hoc-helpers/withRenderAnimation';
 import { isVideoContent, isHTMLContent, videoAttrs } from '../../utils/common';
 import { isToday, convertDateToString } from '../../utils/dateUtils';
 import { SwitchDayContext } from '../Pages/HomePage/HomePage';
-import { getClassNamesFromStyles } from '../../utils/common';
 import styles from './PictureOfTheDay.module.scss';
 
-const PictureOfTheDay = ({ data, classNames }) => {
+const PictureOfTheDay = ({ data, rendered }) => {
   const { url } = data;
 
   const isVideo = useMemo(() => isVideoContent(url), [url]); 
@@ -15,7 +15,10 @@ const PictureOfTheDay = ({ data, classNames }) => {
 
   const viewProps = { ...data, isVideo, isHTML };
 
-  const classes = getClassNamesFromStyles(classNames, styles);
+  const classes = classNames({
+    [styles.PictureOfTheDay]: true,
+    [styles.rendered]: rendered
+  });
   
   return (
     <section className={classes}>
@@ -68,4 +71,4 @@ const PictureOfTheDayView = ({
   );
 };
 
-export default withData(withRenderAnimation(PictureOfTheDay, 'PictureOfTheDay'));
+export default withData(withRenderAnimation(PictureOfTheDay));

@@ -10,14 +10,8 @@ const videoAttrs = {
   allowFullScreen: true
 };
 
-const getClassNamesFromStyles = (classNames, styles) =>
-  classNames
-    .map(className => styles[className])
-    .join(' ');
-
 export {
   videoAttrs,
   isVideoContent,
-  isHTMLContent,
-  getClassNamesFromStyles
+  isHTMLContent
 };
